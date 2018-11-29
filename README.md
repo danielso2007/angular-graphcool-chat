@@ -97,3 +97,44 @@ https://github.com/plinionaves/angular-graphcool-chat
 
 `ng add @angular/material`
 
+# Sobre GraphQL
+
+- __Type system__: Sistema de tipos que usamos para descrever nossos dados;
+- __Queries__: Obtém dados da nossa API (read);
+- __Mutations__: Fas alterações nos dados da nossa API (write);
+- __Subcriptions__: Permite ouvir mudanças em "tempo real" (real-time);
+- __Schema__: Define o "Esquema" da nossa API, pense nele com um container para todos os tipos da nossa API (SDL).
+
+# GraphQL - Documentação, Referências, Artigos
+
+- __Documentação Oficial__: http://graphql.org
+- __Referência__: https://howtographql.com
+- __Apollo GraphQL__: https://www.apollographql.com
+- __Blog Apollo Data__: https://dev-blog.apollodata.com
+
+# Graphcool
+
+Necessário criar uma conta no Graphcool
+
+https://www.graph.cool/
+
+# Instalando o Graphcool
+
+`npm -g i graphcool`
+
+### DOC
+
+https://www.graph.cool/docs/reference/graphcool-cli/commands-aiteerae6l
+
+## Iniciando e criando o projeto backend com Graphcool
+
+Criar dentro do próprio projeto, apenas para estudo. Em projetos oficiais, criar fora do projeto frontend.
+
+Será criado um diretório graphcool dentro do projeto.
+
+`graphcool init graphcool`
+
+# Plugin para Visual Studio - GraphQL for VSCode
+
+[GraphQL for VSCode](https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode)
+

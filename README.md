@@ -1,4 +1,17 @@
-# AngularGraphcollChat
+[![Build Status](https://travis-ci.org/danielso2007/angular-graphcool-chat.svg?branch=development)](https://travis-ci.org/danielso2007/angular-graphcool-chat)
+![version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![GitHub package version](https://img.shields.io/github/package-json/v/danielso2007/angular-graphcool-chat.svg)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/danielso2007/angular-graphcool-chat.svg)](https://github.com/danielso2007/angular-graphcool-chat/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/danielso2007/angular-graphcool-chat.svg)](https://github.com/danielso2007/angular-graphcool-chat/issues?q=is%3Aopen+is%3Aissue)
+![GitHub last commit](https://img.shields.io/github/last-commit/danielso2007/angular-graphcool-chat.svg)
+[![GitHub issue/pull request author](https://img.shields.io/github/issues/detail/u/danielso2007/angular-graphcool-chat/1.svg)](https://github.com/danielso2007/angular-graphcool-chat/pulls)
+![GitHub contributors](https://img.shields.io/github/contributors/danielso2007/angular-graphcool-chat.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/danielso2007/angular-graphcool-chat.svg)
+[![GitHub](https://img.shields.io/github/license/danielso2007/angular-graphcool-chat.svg)](https://github.com/danielso2007/angular-graphcool-chat)
+[![GitHub All Releases](https://img.shields.io/github/downloads/danielso2007/angular-graphcool-chat/total.svg)](https://github.com/danielso2007/angular-graphcool-chat/archive/master.zip)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+# Angular Graphcool Chat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
@@ -26,11 +39,61 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+# Padrão de mensagem de commit (CHANGELOG automatizados):
+
+O projeto terá o controle de versão e a geração do CHANGELOG automatizados com mensagens de confirmação  convencionais seguindo o padrão estabelecido por este documento.
+
+`Lembrando: A mensagem de commit será pré-estabelecida no issue`
+
+Para os commites do projeto, se o mensagem do commite não for definida no issue, usar o padrão definido abaixo:
+
+_Para bugs:_
+
+```sh
+git commit -m "fix: texto_do_que_foi_feito_no_issue (número_do_issue_com_#)"
+```
+
+_Para os demais:_
+
+```sh
+git commit -m "feat: texto_do_que_foi_feito_no_issue (número_do_issue_com_#)"
+```
+
+_Para escopo opcional de um commit:_
+
+```sh
+git commit -m "feat(optional_scope): texto_do_que_foi_feito_no_issue (número_do_issue_com_#)"
+```
+
+_Algumas regras:_
+
+1. Commits deve ser prefixado com um tipo, o qual consiste de um substantivo, `feat`, `fix`, etc, seguida de dois pontos e um espaço.
+2. O tipo `feat`DEVE ser usado quando um commit adiciona um novo recurso ao seu aplicativo ou biblioteca.
+3. O tipo `fix` DEVE ser usado quando um commit representa uma correção de bug para seu aplicativo.
+4. Um escopo opcional pode ser fornecido após um tipo. Um escopo é uma frase que descreve uma seção da base de código entre parênteses, por exemplo, `fix(parser)`:
+
+### Gerando o CHANGELOG do projeto
+
+```sh
+npm run release -- --release-as 1.0.0
+```
+
+### Referências:
+[Standard Version](https://github.com/conventional-changelog/standard-version/blob/master/README.md)
+
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
+
 # Baseado no curso
 
 https://github.com/plinionaves/angular-graphcool-chat
 
 # Inciando novo projeto
 
-ng new angular-graphcoll-chat --style=scss
+`ng new angular-graphcoll-chat --style=scss`
+
+# Angular Material
+
+[Material Design components for Angular](https://material.angular.io/)
+
+`ng add @angular/material`
 

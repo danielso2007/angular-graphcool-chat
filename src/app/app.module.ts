@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 
 import { HttpClientModule } from '@angular/common/http';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [

@@ -138,3 +138,64 @@ Será criado um diretório graphcool dentro do projeto.
 
 [GraphQL for VSCode](https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode)
 
+# Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular
+
+```javascript
+constructor(private http: HttpClient) {
+    // this.createUser();
+    this.allUsers();
+  }
+
+  allUsers(): void {
+    const body = {
+      query: `
+        query {
+          allUsers {
+            id
+            name
+            email
+          }
+        }
+      `
+    };
+
+    this.http.post(this.apiUrl, body).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  createUser(): void {
+    const body = {
+      query: `
+        mutation CreatenewUser($name: String!, $email: String!, $password: String!) {
+          createUser(name: $name, email: $email, password: $password) {
+            id
+            name
+            email
+          }
+        }
+      `,
+      variables: {
+        name: 'Black Panther',
+        email: 'panther@email.com',
+        password: '123456'
+      }
+    };
+
+    this.http.post(this.apiUrl, body).subscribe(res => {
+      console.log('Mutations: ', res);
+    });
+  }
+```
+
+# Usando o Apollo GraphQl Client
+
+[apollographql.com](https://www.apollographql.com/)
+
+[Docs](https://www.apollographql.com/docs/?no-cache=1)
+
+[Angular Doc](https://www.apollographql.com/docs/angular/)
+
+Já há suporte ao `ng add`
+
+`ng add apollo-angular`

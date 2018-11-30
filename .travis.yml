@@ -17,7 +17,7 @@ install:
 
 script:
   - yarn lint
-  - yarn build --base-href https://[danielso2007].github.io/angular-graphcool-chat/
+  - yarn build --base-href https://danielso2007.github.io/angular-graphcool-chat/
 deploy:
   provider: pages
   skip_cleanup: true

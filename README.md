@@ -199,3 +199,14 @@ constructor(private http: HttpClient) {
 Já há suporte ao `ng add`
 
 `ng add apollo-angular`
+
+# Apollo Client Devtools
+
+[apollo-client-devtools](https://github.com/apollographql/apollo-client-devtools)
+
+
+Os devtools aparecem como uma guia "Apollo" no seu inspetor do Google Chrome, ao lado das guias "Elementos" e "Console". Existem atualmente 3 principais características dos devtools:
+
+- __GraphiQL__: Envie consultas para o seu servidor através da interface de rede da Apollo ou consulte o cache da Apollo para ver quais dados são carregados.
+- __Inspetor de armazenamento normalizado__: visualize sua loja GraphQL da maneira que o Apollo Client a vê e pesquise por nomes ou valores de campo.
+- __Inspetor de consulta assistida__: visualize consultas e variáveis ​​ativas e localize os componentes da interface do usuário associados.

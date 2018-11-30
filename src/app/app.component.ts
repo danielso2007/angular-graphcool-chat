@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Subscription } from 'apollo-client/util/Observable';
+import { onError } from 'apollo-link-error';
 import { Subscribable } from 'rxjs';
 
 @Component({

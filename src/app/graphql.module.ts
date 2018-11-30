@@ -1,13 +1,33 @@
 import { environment } from './../environments/environment';
-import {NgModule} from '@angular/core';
-import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
-import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
-import {InMemoryCache} from 'apollo-cache-inmemory';
+import { NgModule } from '@angular/core';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { onError } from 'apollo-link-error';
+import { ApolloLink } from 'apollo-link';
 
 const uri = environment.apiUrl;
 export function createApollo(httpLink: HttpLink) {
+
+  const linkError = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path }) =>
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        )
+      );
+    }
+
+    if (networkError) {
+      console.log(`[Network error]: ${networkError}`);
+    }
+  });
+
   return {
-    link: httpLink.create({uri}),
+    link: ApolloLink.from([
+      linkError,
+      httpLink.create({ uri })
+    ]),
     cache: new InMemoryCache(),
     connectToDevTools: !environment.production
   };
@@ -19,8 +39,8 @@ export function createApollo(httpLink: HttpLink) {
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
-      deps: [HttpLink],
-    },
-  ],
+      deps: [HttpLink]
+    }
+  ]
 })
 export class GraphQLModule {}

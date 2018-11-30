@@ -200,6 +200,12 @@ Já há suporte ao `ng add`
 
 `ng add apollo-angular`
 
+### Apollo Link Error
+
+O Apollo Link é um sistema de componentes modulares para redes GraphQL. 
+
+`npm i -E -S apollo-link-error`
+
 # Apollo Client Devtools
 
 [apollo-client-devtools](https://github.com/apollographql/apollo-client-devtools)

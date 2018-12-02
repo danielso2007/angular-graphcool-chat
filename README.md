@@ -252,7 +252,7 @@ CoreModule   | SharedModule
 Singleton Services | CommonModule
 Single-instance components | FormsModule
 O que o AppComponent precisa | Components/Pipes/Directives
- - | Dump Components
+ x | Dump Components
 
 ## Gerando o CoreModule
 

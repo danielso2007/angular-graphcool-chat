@@ -14,10 +14,29 @@
 ----
 
 # Índice
-
 - [Angular Graphcool Chat](#angular-graphcool-chat)
- - [Development server](#development-server)
-
+  - [Development server](#development-server)
+  - [Code scaffolding](#code-scaffolding)
+  - [Build](#build)
+  - [Running unit tests](#running-unit-tests)
+  - [Running end-to-end tests](#running-end-to-end-tests)
+  - [Further help](#further-help)
+- [Padrão de mensagem de commit (CHANGELOG automatizados):](#padrão-de-mensagem-de-commit-changelog-automatizados)
+  - [Gerando o CHANGELOG do projeto](#gerando-o-changelog-do-projeto)
+  - [Referências:](#referências)
+- [Baseado no curso](#baseado-no-curso)
+- [Inciando novo projeto](#inciando-novo-projeto)
+- [Angular Material](#angular-material)
+- [Sobre GraphQL](#sobre-graphql)
+- [GraphQL - Documentação, Referências, Artigos](#graphql---documentação-referências-artigos)[Graphcool](#graphcool)
+- [Instalando o Graphcool](#instalando-o-graphcool)
+  - [DOC](#doc)
+  - [Iniciando e criando o projeto backend com Graphcool](#iniciando-e-criando-o-projeto-backend-com-graphcool)
+- [Plugin para Visual Studio - GraphQL for VSCode](#plugin-para-visual-studio---graphql-for-vscode)- [Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular](#exemplo-de-chamada-para-o-endpoint-graphql-usando-httpcliente-do-angular)
+- [Usando o Apollo GraphQl Client](#usando-o-apollo-graphql-client)
+  - [Apollo Link Error](#apollo-link-error)
+  - [Apollo Client Devtools](#apollo-client-devtools)
+- [Modularização no Angular](#modularização-no-angular)
 ----
 
 # Angular Graphcool Chat

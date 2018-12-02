@@ -284,3 +284,11 @@ O que o AppComponent precisa | Components/Pipes/Directives
 
 # Autenticação com Graphcool
 
+Use os modelos Graphcool para inserir rapidamente a funcionalidade predefinida em seu próprio serviço Graphcool.
+
+(graphcool-templates)[https://github.com/prisma-archive/graphcool-templates]
+
+## Instalando o template
+
+`gcf add-template auth/email-password`
+

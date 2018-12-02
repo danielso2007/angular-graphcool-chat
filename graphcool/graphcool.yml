@@ -63,7 +63,7 @@ permissions:
     authenticated: true
     query: src/permissions/User.graphql
   - operation: User.read
-    fields: [name, email, createAt, updateAt, photo]
+    fields: [name, email, createdAt, updatedAt, photo]
     authenticated: true
   - operation: User.update
     authenticated: true

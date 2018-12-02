@@ -102,16 +102,16 @@ permissions:
   - operation: UsersOnChats.disconnect
     authenticated: true
 
-  - operation: MessagesonChat.connect
+  - operation: MessagesOnChat.connect
     authenticated: true
-  - operation: MessagesonUser.connect
+  - operation: MessagesOnUser.connect
     authenticated: true
 
   - operation: UserPhoto.connect
     authenticated: true
   - operation: UserPhoto.disconnect
     authenticated: true
-    
+
   - operation: ChatPhoto.connect
     authenticated: true
   - operation: ChatPhoto.disconnect

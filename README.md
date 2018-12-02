@@ -247,9 +247,40 @@ Os devtools aparecem como uma guia "Apollo" no seu inspetor do Google Chrome, ao
 
 # Modularização no Angular
 
-Exemplo   | Valor do exemplo
+CoreModule   | SharedModule
 --------- | ------
-Exemplo 1 | R$ 10
-Exemplo 2 | R$ 8
-Exemplo 3 | R$ 7
-Exemplo 4 | R$ 8
+Singleton Services | CommonModule
+Single-instance components | FormsModule
+O que o AppComponent precisa | Components/Pipes/Directives
+ - | Dump Components
+
+## Gerando o CoreModule
+
+- Gera sem modificação:
+
+`ng g m core --dryRun`
+
+- Gera o core:
+
+`ng g m core`
+
+## Gerando o SharedModule
+
+- Gera sem modificação:
+
+`ng g m shared --dryRun`
+
+- Gera o core:
+
+`ng g m shared`
+
+# Novas atualizações com ng update
+
+`ng update`
+
+`ng update @angular/core`
+
+`ng update @angular/material`
+
+# Autenticação com Graphcool
+

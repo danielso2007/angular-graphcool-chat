@@ -292,3 +292,14 @@ Use os modelos Graphcool para inserir rapidamente a funcionalidade predefinida e
 
 `gcf add-template auth/email-password`
 
+# Graphcool - File Management
+
+https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0
+
+https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0#file-upload-and-permissions
+
+https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0#file-upload-and-permissions
+
+# Graphcool - Permission Queries
+
+https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3aqu0ee

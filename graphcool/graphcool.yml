@@ -61,10 +61,19 @@ permissions:
 
   - operation: User.read
     authenticated: true
+    query: src/permissions/User.graphql
+  - operation: User.read
+    fields: [name, email, createAt, updateAt, photo]
+    authenticated: true
   - operation: User.update
     authenticated: true
+    query: src/permissions/User.graphql
+  - operation: User.update
+    authenticated: true
+    fields: [photo]
   - operation: User.delete
     authenticated: true
+    query: src/permissions/User.graphql
 
   # Chat
   - operation: Chat.read

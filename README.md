@@ -303,3 +303,11 @@ https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0#fil
 # Graphcool - Permission Queries
 
 https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3aqu0ee
+
+# Guarda de rotas no Angular
+
+- __CanActivate__: Intermedia a nagevação para uma rota;
+- __CanActiveChild__: intermedia a navegação para uma rota filha;
+- __CanDeactivate__: Intermedia a navegação "para fora" da rota atual;
+- __CanLoad__: Intermedia a navegação para um módulo "Lazy Loading";
+- __Resolve__: Para executar a "recuperação" de dados (ex id) antes de ativar a rota;

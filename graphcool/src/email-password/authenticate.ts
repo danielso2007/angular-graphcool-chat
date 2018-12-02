@@ -1,6 +1,6 @@
-import Graphcool, { fromEvent, FunctionEvent } from 'graphcool-lib'
-import { GraphQLClient } from 'graphql-request'
-import * as bcrypt from 'bcryptjs'
+import Graphcool, { fromEvent, FunctionEvent } from 'graphcool-lib';
+import { GraphQLClient } from 'graphql-request';
+import * as bcrypt from 'bcryptjs';
 
 interface User {
   id: string
@@ -41,7 +41,7 @@ export default async (event: FunctionEvent<EventData>) => {
     // generate node token for existing User node
     const token = await graphcool.generateNodeToken(user.id, 'User')
 
-    return { data: { id: user.id, token} }
+    return { data: { id: user.id, token } }
   } catch (e) {
     console.log(e)
     return { error: 'An unexpected error occured during authentication.' }

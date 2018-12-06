@@ -13,7 +13,6 @@
 
 ----
 
-# Índice
 - [Angular Graphcool Chat](#angular-graphcool-chat)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -21,22 +20,33 @@
   - [Running unit tests](#running-unit-tests)
   - [Running end-to-end tests](#running-end-to-end-tests)
   - [Further help](#further-help)
-- [Padrão de mensagem de commit (CHANGELOG automatizados):](#padrão-de-mensagem-de-commit-changelog-automatizados)
+- [Padrão de mensagem de commit (CHANGELOG automatizados):](#padr%C3%A3o-de-mensagem-de-commit-changelog-automatizados)
   - [Gerando o CHANGELOG do projeto](#gerando-o-changelog-do-projeto)
-  - [Referências:](#referências)
+  - [Referências:](#refer%C3%AAncias)
 - [Baseado no curso](#baseado-no-curso)
 - [Inciando novo projeto](#inciando-novo-projeto)
 - [Angular Material](#angular-material)
 - [Sobre GraphQL](#sobre-graphql)
-- [GraphQL - Documentação, Referências, Artigos](#graphql---documentação-referências-artigos)[Graphcool](#graphcool)
+- [GraphQL - Documentação, Referências, Artigos](#graphql---documenta%C3%A7%C3%A3o-refer%C3%AAncias-artigos)
+- [Graphcool](#graphcool)
 - [Instalando o Graphcool](#instalando-o-graphcool)
   - [DOC](#doc)
   - [Iniciando e criando o projeto backend com Graphcool](#iniciando-e-criando-o-projeto-backend-com-graphcool)
-- [Plugin para Visual Studio - GraphQL for VSCode](#plugin-para-visual-studio---graphql-for-vscode)- [Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular](#exemplo-de-chamada-para-o-endpoint-graphql-usando-httpcliente-do-angular)
+- [Plugin para Visual Studio - GraphQL for VSCode](#plugin-para-visual-studio---graphql-for-vscode)
+- [Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular](#exemplo-de-chamada-para-o-endpoint-graphql-usando-httpcliente-do-angular)
 - [Usando o Apollo GraphQl Client](#usando-o-apollo-graphql-client)
   - [Apollo Link Error](#apollo-link-error)
   - [Apollo Client Devtools](#apollo-client-devtools)
-- [Modularização no Angular](#modularização-no-angular)
+- [Modularização no Angular](#modulariza%C3%A7%C3%A3o-no-angular)
+  - [Gerando o CoreModule](#gerando-o-coremodule)
+  - [Gerando o SharedModule](#gerando-o-sharedmodule)
+- [Novas atualizações com ng update](#novas-atualiza%C3%A7%C3%B5es-com-ng-update)
+- [Autenticação com Graphcool](#autentica%C3%A7%C3%A3o-com-graphcool)
+  - [Instalando o template](#instalando-o-template)
+- [Graphcool - File Management](#graphcool---file-management)
+- [Graphcool - Permission Queries](#graphcool---permission-queries)
+- [Guarda de rotas no Angular](#guarda-de-rotas-no-angular)
+
 ----
 
 # Angular Graphcool Chat

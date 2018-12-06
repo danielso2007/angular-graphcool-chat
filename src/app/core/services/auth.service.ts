@@ -14,11 +14,11 @@ export class AuthService {
     //   email: 'deadpool@email.com',
     //   password: '123456'
     // }).subscribe(res => console.log(res));
-    this.signupUser({
-      name: 'Doctor Strange',
-      email: 'strange@email.com',
-      password: '123456'
-    }).subscribe(res => console.log(res));
+    // this.signupUser({
+    //   name: 'Doctor Strange',
+    //   email: 'strange@email.com',
+    //   password: '123456'
+    // }).subscribe(res => console.log(res));
   }
 
   signinUser(variables: {

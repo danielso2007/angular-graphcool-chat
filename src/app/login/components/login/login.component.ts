@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+
+import { takeWhile } from 'rxjs/operators';
+import { ErrorService } from '../../../core/services/error.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
 
@@ -23,11 +27,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
-    ) { }
+    private authService: AuthService,
+    private errorService: ErrorService,
+    private snackBar: MatSnackBar
+    ) {}
 
   ngOnInit() {
     this.createForm();
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
   }
 
   createForm(): void {
@@ -38,6 +48,37 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.configs.isLoading = true;
+    this.loginForm.disable();
+
+    const operation = (this.configs.isLogin) ? this.authService.signinUser(this.loginForm.value) : this.authService.signupUser(this.loginForm.value);
+
+    operation
+      .pipe(
+        takeWhile(() => this.alive)
+      ).subscribe(
+        res => {
+          console.log(res);
+          this.loginForm.enable();
+          // this.authService.setRememberMe(this.loginForm.value);
+          // const redirect: string = this.authService.redirectUrl || '/dashboard';
+
+          // this.authService.isAuthenticated
+          //   .pipe(takeWhile(() => this.alive))
+          //   .subscribe((is: boolean) => {
+          //     if (is) {
+          //       this.router.navigate([redirect]);
+          //       this.authService.redirectUrl = null;
+          //       this.configs.isLoading = false;
+          //     }
+          //   });
+        },
+        err => {
+          this.loginForm.enable();
+          this.configs.isLoading = false;
+          this.snackBar.open(this.errorService.getErrorMessage(err), 'Done', {duration: 5000, verticalPosition: 'top'});
+        }
+      );
   }
 
   get name(): FormControl { return <FormControl>this.loginForm.get('name'); }

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ApolloConfigModule } from './../../apollo-config.module';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, ReplaySubject, of } from 'rxjs';
 import { Apollo } from 'apollo-angular';
@@ -20,7 +22,7 @@ export class AuthService {
   keepSigned: boolean;
   rememberMe: boolean;
 
-  constructor(private apollo: Apollo) {
+  constructor(private apollo: Apollo, private apolloConfigModule: ApolloConfigModule, private router: Router) {
     this.init();
     this._isAuthenticated.subscribe(is => console.log('AuthSate: ', is));
     // Teste
@@ -197,5 +199,16 @@ export class AuthService {
       return;
     }
     this._isAuthenticated.next(authData.isAuthenticated);
+  }
+
+  logout(): void {
+    this.apolloConfigModule.closeWebSocketConnection();
+    window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
+    window.localStorage.removeItem(StorageKeys.KEEP_SIGNED);
+    this.apolloConfigModule.cachePersistor.purge();
+    this.keepSigned = false;
+    this._isAuthenticated.next(false);
+    this.router.navigate(['/login']);
+    this.apollo.getClient().resetStore();
   }
 }

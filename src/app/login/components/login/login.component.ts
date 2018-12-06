@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           console.log(res);
           this.loginForm.enable();
           // this.authService.setRememberMe(this.loginForm.value);
-          // const redirect: string = this.authService.redirectUrl || '/dashboard';
+          const redirect: string = this.authService.redirectUrl || '/dashboard';
 
           // this.authService.isAuthenticated
           //   .pipe(takeWhile(() => this.alive))

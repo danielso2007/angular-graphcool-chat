@@ -11,7 +11,9 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
   private _isAuthenticated = new ReplaySubject<boolean>(1);
+  redirectUrl: string;
 
   constructor(private apollo: Apollo) {
     // Teste
@@ -74,21 +76,28 @@ export class AuthService {
     return throwError(error);
   }
 
+  // private setAuthUser(userId: string): Observable<User> {
+  //   return this.userService.getUserById(userId)
+  //     .pipe(
+  //       tap((user: User) => this.authUser = user)
+  //     );
+  // }
+
   private setAuthState(
     authData: { id: string; token: string; isAuthenticated: boolean }, isRefresh: boolean = false): void {
-    if (authData.isAuthenticated) {
-      // window.localStorage.setItem(StorageKeys.AUTH_TOKEN, authData.token);
-      // this.setAuthUser(authData.id)
-      //   .pipe(
-      //     take(1),
-      //     tap(() => this._isAuthenticated.next(authData.isAuthenticated))
-      //   )
-      //   .subscribe();
-      // if (!isRefresh) {
-      //   this.apolloConfigModule.closeWebSocketConnection();
-      // }
-      // return;
-    }
-    this._isAuthenticated.next(authData.isAuthenticated);
+    // if (authData.isAuthenticated) {
+    //   // window.localStorage.setItem(StorageKeys.AUTH_TOKEN, authData.token);
+    //   this.setAuthUser(authData.id)
+    //     .pipe(
+    //       take(1),
+    //       tap(() => this._isAuthenticated.next(authData.isAuthenticated))
+    //     )
+    //     .subscribe();
+    //   if (!isRefresh) {
+    //     this.apolloConfigModule.closeWebSocketConnection();
+    //   }
+    //   return;
+    // }
+    // this._isAuthenticated.next(authData.isAuthenticated);
   }
 }

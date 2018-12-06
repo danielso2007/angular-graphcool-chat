@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.createForm();
+    const userData = this.authService.getRememberMe();
+    if (userData) {
+      this.email.setValue(userData.email);
+      this.password.setValue(userData.password);
+    }
   }
 
   ngOnDestroy() {

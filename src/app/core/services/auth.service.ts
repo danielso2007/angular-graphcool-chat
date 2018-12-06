@@ -5,10 +5,12 @@ import {
   AUTHENTICATE_USER_MUTATION,
   SIGNUP_USER_MUTATION
 } from './auth.graphql';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, mergeMap } from 'rxjs/operators';
 
 import { StorageKeys } from '../../storage-keys';
 import { Base64 } from 'js-base64';
+import { LoggedInUserQuery, LOGGED_IN_USER_QUERY } from './auth.graphql';
+import { of } from 'zen-observable';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,7 @@ export class AuthService {
   rememberMe: boolean;
 
   constructor(private apollo: Apollo) {
+    this.init();
     // Teste
     // this.signinUser({
     //   email: 'deadpool@email.com',
@@ -33,12 +36,8 @@ export class AuthService {
   }
 
   init(): void {
-    this.keepSigned = JSON.parse(
-      window.localStorage.getItem(StorageKeys.KEEP_SIGNED)
-    );
-    this.rememberMe = JSON.parse(
-      window.localStorage.getItem(StorageKeys.REMEMBER_ME)
-    );
+    this.keepSigned = JSON.parse(window.localStorage.getItem(StorageKeys.KEEP_SIGNED));
+    this.rememberMe = JSON.parse(window.localStorage.getItem(StorageKeys.REMEMBER_ME));
   }
 
   get isAuthenticated(): Observable<boolean> {
@@ -132,6 +131,20 @@ export class AuthService {
   handleError(error: any): Observable<any> {
     console.error('ERRO NA REQUISIÇAO => ', error);
     return throwError(error);
+  }
+
+  private validateToken(): Observable<{id: string, isAuthenticated: boolean}> {
+    return this.apollo.query<LoggedInUserQuery>({query: LOGGED_IN_USER_QUERY, fetchPolicy: 'network-only'})
+    .pipe(
+      map(res => {
+        const user = res.data.loggedInUser;
+        return {
+          id: user && user.id,
+          isAuthenticated: user !== null
+        };
+      }),
+      mergeMap(authData => (authData.isAuthenticated) ? of(authData) : throwError(new Error('Invalid token!')))
+    );
   }
 
   // private setAuthUser(userId: string): Observable<User> {

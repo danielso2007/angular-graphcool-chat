@@ -28,7 +28,7 @@ export class ApolloConfigModule {
 
   constructor(
     private apollo: Apollo,
-    @Inject(GRAPHCOOL_CONFIG) private graphcoolConfig: GraphcoolConfig,
+    @Inject(GRAPHCOOL_CONFIG) private graphcoolConfig: GraphcoolConfig, // Exemplo de injeção
     private httpLink: HttpLink
   ) {
     const uri = this.graphcoolConfig.simpleAPI;

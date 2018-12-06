@@ -1,5 +1,6 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../services/auth.service';
 
 const graphcoolId = environment.graphcool_id;
 
@@ -22,6 +23,8 @@ export const GRAPHCOOL_CONFIG = new InjectionToken<GraphcoolConfig>(
   {
     providedIn: 'root',
     factory: () => {
+      // Exemplo de injeção.
+      // const authService = inject<AuthService>(AuthService);
       return graphcoolConfig;
     }
   }

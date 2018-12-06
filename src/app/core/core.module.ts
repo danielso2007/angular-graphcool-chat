@@ -1,9 +1,9 @@
+import { ApolloConfigModule } from './../apollo-config.module';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
-import { GraphQLModule } from '../graphql.module';
 
 @NgModule({
   declarations: [],
@@ -13,7 +13,7 @@ import { GraphQLModule } from '../graphql.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    GraphQLModule
+    ApolloConfigModule
   ]
 })
 export class CoreModule {

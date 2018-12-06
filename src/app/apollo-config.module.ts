@@ -35,6 +35,7 @@ export class ApolloConfigModule {
     const http = httpLink.create({ uri });
 
     const authMiddleware: ApolloLink = new ApolloLink((operation, forward) => {
+      console.log('Context: ', operation.getContext());
       operation.setContext({
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.getAuthToken()}`

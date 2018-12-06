@@ -49,6 +49,7 @@
     "@types/angular-material": "1.1.61",
     "@types/jasmine": "2.8.8",
     "@types/jasminewd2": "2.0.3",
+    "@types/js-base64": "2.3.1",
     "@types/node": "10.12.12",
     "codelyzer": "4.5.0",
     "jasmine-core": "2.99.1",

@@ -46,6 +46,7 @@
 - [Graphcool - File Management](#graphcool---file-management)
 - [Graphcool - Permission Queries](#graphcool---permission-queries)
 - [Guarda de rotas no Angular](#guarda-de-rotas-no-angular)
+- [Lazy Loading Feature Modules](#lazy-loading-feature-modules)
 
 ----
 
@@ -321,3 +322,7 @@ https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3
 - __CanDeactivate__: Intermedia a navegação "para fora" da rota atual;
 - __CanLoad__: Intermedia a navegação para um módulo "Lazy Loading";
 - __Resolve__: Para executar a "recuperação" de dados (ex id) antes de ativar a rota;
+
+# Lazy Loading Feature Modules
+
+[angular.io/guide/lazy-loading-ngmodules](https://angular.io/guide/lazy-loading-ngmodules)

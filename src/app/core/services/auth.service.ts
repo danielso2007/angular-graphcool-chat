@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, ReplaySubject } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { AUTHENTICATE_USER_MUTATION, SIGNUP_USER_MUTATION } from './auth.graphql';
 import { catchError, map } from 'rxjs/operators';
@@ -8,6 +8,9 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private _isAuthenticated = new ReplaySubject<boolean>(1);
+
   constructor(private apollo: Apollo) {
     // Teste
     // this.signinUser({
@@ -19,6 +22,10 @@ export class AuthService {
     //   email: 'strange@email.com',
     //   password: '123456'
     // }).subscribe(res => console.log(res));
+  }
+
+  get isAuthenticated(): Observable<boolean> {
+    return this._isAuthenticated.asObservable();
   }
 
   signinUser(variables: {

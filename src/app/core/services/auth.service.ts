@@ -61,6 +61,8 @@ export class AuthService {
   }
 
   setRememberMe(user: { email: string; password: string }): void {
+    console.log('setRememberMe: ', user.email);
+    console.log('setRememberMe criptografado: ', Base64.encode(user.email));
     if (this.rememberMe) {
       window.localStorage.setItem(StorageKeys.USER_EMAIL, Base64.encode(user.email));
       window.localStorage.setItem(StorageKeys.USER_PASSWORD, Base64.encode(user.password));

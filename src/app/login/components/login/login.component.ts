@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         res => {
           console.log(res);
           this.loginForm.enable();
-          // this.authService.setRememberMe(this.loginForm.value);
+          this.authService.setRememberMe(this.loginForm.value);
           const redirect: string = this.authService.redirectUrl || '/dashboard';
 
           // this.authService.isAuthenticated

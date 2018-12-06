@@ -42,6 +42,9 @@
           </mat-error>
         </mat-form-field>
 
+        <mat-slide-toggle [checked]="authService.keepSigned" (change)="onKeepSigned()">Keep me signed in</mat-slide-toggle>
+        <mat-slide-toggle [checked]="authService.rememberMe" (change)="onRememberMe()">Remember me</mat-slide-toggle>
+
         <button type="submit" mat-button color="primary" [disabled]="loginForm.invalid || configs.isLoading">{{ configs.actionText }}</button>
         <button type="button" mat-button color="primary" [disabled]="configs.isLoading" (click)="changeAction()">{{ configs.buttonActionText }}</button>
 

@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           //   });
         },
         err => {
+          console.log(err);
           this.loginForm.enable();
           this.configs.isLoading = false;
           this.snackBar.open(this.errorService.getErrorMessage(err), 'Done', {duration: 5000, verticalPosition: 'top'});
@@ -89,6 +90,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.configs.actionText = !this.configs.isLogin ? 'SignUp' : 'SignIn';
     this.configs.buttonActionText = !this.configs.isLogin ? 'Already have account' : 'Create account';
     !this.configs.isLogin ? this.loginForm.addControl('name', this.nameControl) : this.loginForm.removeControl('name');
+  }
+
+  onKeepSigned(): void {
+    this.authService.toggleKeepSigned();
+  }
+
+  onRememberMe(): void {
+    this.authService.toggleRememberMe();
   }
 
 }

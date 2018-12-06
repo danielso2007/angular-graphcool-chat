@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, ReplaySubject } from 'rxjs';
+import { Observable, throwError, ReplaySubject, of } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import {
   AUTHENTICATE_USER_MUTATION,
@@ -10,7 +10,6 @@ import { catchError, map, tap, mergeMap } from 'rxjs/operators';
 import { StorageKeys } from '../../storage-keys';
 import { Base64 } from 'js-base64';
 import { LoggedInUserQuery, LOGGED_IN_USER_QUERY } from './auth.graphql';
-import { of } from 'zen-observable';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,7 @@ export class AuthService {
 
   constructor(private apollo: Apollo) {
     this.init();
+    this._isAuthenticated.subscribe(is => console.log('AuthSate: ', is));
     // Teste
     // this.signinUser({
     //   email: 'deadpool@email.com',
@@ -77,6 +77,29 @@ export class AuthService {
       email: Base64.decode(window.localStorage.getItem(StorageKeys.USER_EMAIL)),
       password: Base64.decode(window.localStorage.getItem(StorageKeys.USER_PASSWORD))
     };
+  }
+
+  autoLogin(): Observable<void> {
+    console.log('autoLogin: ', this.keepSigned);
+    if (!this.keepSigned) {
+      this._isAuthenticated.next(false);
+      window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
+      return of();
+    }
+
+    return this.validateToken()
+      .pipe(
+        tap(authData => {
+          const token = window.localStorage.getItem(StorageKeys.AUTH_TOKEN);
+          console.log('Token válido');
+          this.setAuthState({id: authData.id, token, isAuthenticated: authData.isAuthenticated}, true);
+        }),
+        mergeMap(res => of()),
+        catchError(error => {
+          this.setAuthState({id: null, token: null, isAuthenticated: false});
+          return throwError(error);
+        })
+      );
   }
 
   signinUser(variables: {

@@ -7,7 +7,7 @@ import {
   AUTHENTICATE_USER_MUTATION,
   SIGNUP_USER_MUTATION
 } from './auth.graphql';
-import { catchError, map, tap, mergeMap } from 'rxjs/operators';
+import { catchError, map, tap, mergeMap, take } from 'rxjs/operators';
 
 import { StorageKeys } from '../../storage-keys';
 import { Base64 } from 'js-base64';
@@ -174,28 +174,28 @@ export class AuthService {
     );
   }
 
-  // private setAuthUser(userId: string): Observable<User> {
-  //   return this.userService.getUserById(userId)
-  //     .pipe(
-  //       tap((user: User) => this.authUser = user)
-  //     );
-  // }
+  private setAuthUser(userId: string): Observable<any> {
+    // return this.userService.getUserById(userId)
+    //   .pipe(
+    //     tap((user: User) => this.authUser = user)
+    //   );
+    return Observable.create();
+  }
 
-  private setAuthState(
-    authData: { id: string; token: string; isAuthenticated: boolean },
-    isRefresh: boolean = false
-  ): void {
+  private setAuthState(authData: { id: string; token: string; isAuthenticated: boolean }, isRefresh: boolean = false): void {
+    console.log('setAuthState: ', authData);
     if (authData.isAuthenticated) {
       window.localStorage.setItem(StorageKeys.AUTH_TOKEN, authData.token);
-      // this.setAuthUser(authData.id)
-      //   .pipe(
-      //     take(1),
-      //     tap(() => this._isAuthenticated.next(authData.isAuthenticated))
-      //   )
-      //   .subscribe();
-      // if (!isRefresh) {
-      //   this.apolloConfigModule.closeWebSocketConnection();
-      // }
+      this._isAuthenticated.next(authData.isAuthenticated);
+      this.setAuthUser(authData.id)
+        .pipe(
+          take(1),
+          tap(() => this._isAuthenticated.next(authData.isAuthenticated))
+        )
+        .subscribe();
+      if (!isRefresh) {
+        this.apolloConfigModule.closeWebSocketConnection();
+      }
       return;
     }
     this._isAuthenticated.next(authData.isAuthenticated);

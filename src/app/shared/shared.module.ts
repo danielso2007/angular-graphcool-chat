@@ -7,11 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   exports: [
@@ -24,8 +25,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   declarations: []
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -5,6 +5,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { takeWhile } from 'rxjs/operators';
 import { ErrorService } from '../../../core/services/error.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './login.component.html',
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private router: Router,
     private errorService: ErrorService,
     private snackBar: MatSnackBar
     ) {}
@@ -67,15 +69,16 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authService.setRememberMe(this.loginForm.value);
           const redirect: string = this.authService.redirectUrl || '/dashboard';
 
-          // this.authService.isAuthenticated
-          //   .pipe(takeWhile(() => this.alive))
-          //   .subscribe((is: boolean) => {
-          //     if (is) {
-          //       this.router.navigate([redirect]);
-          //       this.authService.redirectUrl = null;
+          this.authService.isAuthenticated
+            .pipe(takeWhile(() => this.alive))
+            .subscribe((is: boolean) => {
+              console.log('is', is);
+              if (is) {
+                this.router.navigate([redirect]);
+                this.authService.redirectUrl = null;
                 this.configs.isLoading = false;
-          //     }
-          //   });
+              }
+            });
         },
         err => {
           console.log(err);

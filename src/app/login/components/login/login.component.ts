@@ -72,8 +72,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authService.isAuthenticated
             .pipe(takeWhile(() => this.alive))
             .subscribe((is: boolean) => {
-              console.log('is', is);
               if (is) {
+                console.log('Redirecting...', redirect);
                 this.router.navigate([redirect]);
                 this.authService.redirectUrl = null;
                 this.configs.isLoading = false;

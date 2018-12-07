@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -8,7 +9,10 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class DashboardHeaderComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    public title: Title
+  ) {}
 
   onLogout(): void {
     this.authService.logout();

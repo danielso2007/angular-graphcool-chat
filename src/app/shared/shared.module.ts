@@ -14,8 +14,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material';
+import { NoRecordComponent } from './components/no-record/no-record.component';
 
 @NgModule({
+  imports: [MatIconModule],
   exports: [
     CommonModule,
     MatCardModule,
@@ -30,8 +32,9 @@ import { MatTabsModule } from '@angular/material';
     MatListModule,
     MatSidenavModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    NoRecordComponent
   ],
-  declarations: []
+  declarations: [NoRecordComponent]
 })
 export class SharedModule {}

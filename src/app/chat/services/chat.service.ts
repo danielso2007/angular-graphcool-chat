@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { AllChatsQuery, USER_CHATS_QUERY } from './chat.graphql';
+import { AllChatsQuery, USER_CHATS_QUERY, ChatQuery, CHAT_BY_ID_OR_BY_USERS_QUERY } from './chat.graphql';
 import { Chat } from '../models/chat.model';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -31,6 +31,22 @@ export class ChatService {
       }
     }).pipe(
       map(res => res.data.allChats)
+    );
+  }
+
+  getChatByIdOrUsers(chatOrUserId: string): Observable<Chat> {
+    return this.apollo.query<ChatQuery | AllChatsQuery>({
+      query: CHAT_BY_ID_OR_BY_USERS_QUERY,
+      variables: {
+        chatId: chatOrUserId,
+        loggerUserID: this.authService.authUser.id,
+        targetUserId: chatOrUserId
+      }
+    }).pipe(
+      map(res => {
+        const chat: Chat = (res.data['Chat']) ? res.data['Chat'] : res.data['allChats'][0];
+        return chat;
+      })
     );
   }
 }

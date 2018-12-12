@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ChatModule } from '../chat.module';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { AllChatsQuery, USER_CHATS_QUERY } from './chat.graphql';
@@ -10,9 +9,7 @@ import { UserService } from '../../core/services/user.service';
 import { Subscription } from 'apollo-client/util/Observable';
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: ChatModule
-})
+@Injectable()
 export class ChatService {
 
   chats$: Observable<Chat[]>;
@@ -30,7 +27,7 @@ export class ChatService {
     return this.apollo.query<AllChatsQuery>({
       query: USER_CHATS_QUERY,
       variables: {
-        userId: this.authService.authUser.id
+        loggedUserId: this.authService.authUser.id
       }
     }).pipe(
       map(res => res.data.allChats)

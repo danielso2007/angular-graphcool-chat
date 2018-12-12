@@ -1,3 +1,20 @@
-<p>
-  chat-list works!
-</p>
+<mat-nav-list>
+    <ng-container *ngIf="chats$ | async as chats; else loadingchats">
+      <ng-container *ngIf="chats.length > 0; else nochats">
+        <a mat-list-item [routerLink]="['../', chat.id]" *ngFor="let chat of chats">
+          <img matListAvatar src="assets/images/user-no-photo.png" [title]="chat.name">
+          <h3 matLine>{{ getChatTitle(chat) }}</h3>
+          <p matLine>{{ getLastMessage(chat) }}</p>
+        </a>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #nochats>
+      <app-no-record icon="chat_bubble" title="No chats."></app-no-record>
+    </ng-template>
+
+    <ng-template #loadingchats>
+      <mat-spinner class="spinner" diameter="50" stokeWidth="3"></mat-spinner>
+    </ng-template>
+
+  </mat-nav-list>

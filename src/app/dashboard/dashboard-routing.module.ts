@@ -1,3 +1,4 @@
+import { ChatModule } from './../chat/chat.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     canActivateChild: [ AuthGuard ],
     children: [
+      {path: 'chat', loadChildren: './../chat/chat.module#ChatModule', canLoad: [ AuthGuard ]},
       { path: '', component: DashboardResourcesComponent}
     ]
   }

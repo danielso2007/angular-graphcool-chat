@@ -13,72 +13,73 @@
 
 ----
 
-- [Angular Graphcool Chat](#angular-graphcool-chat)
-  - [Development server](#development-server)
-  - [Code scaffolding](#code-scaffolding)
-  - [Build](#build)
-  - [Running unit tests](#running-unit-tests)
-  - [Running end-to-end tests](#running-end-to-end-tests)
-  - [Further help](#further-help)
-- [Padrão de mensagem de commit (CHANGELOG automatizados):](#padr%C3%A3o-de-mensagem-de-commit-changelog-automatizados)
-  - [Gerando o CHANGELOG do projeto](#gerando-o-changelog-do-projeto)
-  - [Referências:](#refer%C3%AAncias)
-- [Baseado no curso](#baseado-no-curso)
-- [Inciando novo projeto](#inciando-novo-projeto)
-- [Angular Material](#angular-material)
-- [Sobre GraphQL](#sobre-graphql)
-- [GraphQL - Documentação, Referências, Artigos](#graphql---documenta%C3%A7%C3%A3o-refer%C3%AAncias-artigos)
-- [Graphcool](#graphcool)
-- [Instalando o Graphcool](#instalando-o-graphcool)
-  - [DOC](#doc)
-  - [Iniciando e criando o projeto backend com Graphcool](#iniciando-e-criando-o-projeto-backend-com-graphcool)
-- [Plugin para Visual Studio - GraphQL for VSCode](#plugin-para-visual-studio---graphql-for-vscode)
-- [Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular](#exemplo-de-chamada-para-o-endpoint-graphql-usando-httpcliente-do-angular)
-- [Usando o Apollo GraphQl Client](#usando-o-apollo-graphql-client)
-  - [Apollo Link Error](#apollo-link-error)
-  - [Apollo Client Devtools](#apollo-client-devtools)
-- [Modularização no Angular](#modulariza%C3%A7%C3%A3o-no-angular)
-  - [Gerando o CoreModule](#gerando-o-coremodule)
-  - [Gerando o SharedModule](#gerando-o-sharedmodule)
-- [Novas atualizações com ng update](#novas-atualiza%C3%A7%C3%B5es-com-ng-update)
-- [Autenticação com Graphcool](#autentica%C3%A7%C3%A3o-com-graphcool)
-  - [Instalando o template](#instalando-o-template)
-- [Graphcool - File Management](#graphcool---file-management)
-- [Graphcool - Permission Queries](#graphcool---permission-queries)
-- [Guarda de rotas no Angular](#guarda-de-rotas-no-angular)
-- [Lazy Loading Feature Modules](#lazy-loading-feature-modules)
+- [1. Angular Graphcool Chat](#1-angular-graphcool-chat)
+  - [1.1. Development server](#11-development-server)
+  - [1.2. Code scaffolding](#12-code-scaffolding)
+  - [1.3. Build](#13-build)
+  - [1.4. Running unit tests](#14-running-unit-tests)
+  - [1.5. Running end-to-end tests](#15-running-end-to-end-tests)
+  - [1.6. Further help](#16-further-help)
+- [2. Padrão de mensagem de commit (CHANGELOG automatizados):](#2-padr%C3%A3o-de-mensagem-de-commit-changelog-automatizados)
+  - [2.1. Gerando o CHANGELOG do projeto](#21-gerando-o-changelog-do-projeto)
+  - [2.2. Referências:](#22-refer%C3%AAncias)
+- [3. Baseado no curso](#3-baseado-no-curso)
+- [4. Inciando novo projeto](#4-inciando-novo-projeto)
+- [5. Angular Material](#5-angular-material)
+- [6. Sobre GraphQL](#6-sobre-graphql)
+- [7. GraphQL - Documentação, Referências, Artigos](#7-graphql---documenta%C3%A7%C3%A3o-refer%C3%AAncias-artigos)
+- [8. Graphcool](#8-graphcool)
+- [9. Instalando o Graphcool](#9-instalando-o-graphcool)
+  - [9.1. DOC](#91-doc)
+  - [9.2. Iniciando e criando o projeto backend com Graphcool](#92-iniciando-e-criando-o-projeto-backend-com-graphcool)
+- [10. Plugin para Visual Studio - GraphQL for VSCode](#10-plugin-para-visual-studio---graphql-for-vscode)
+- [11. Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular](#11-exemplo-de-chamada-para-o-endpoint-graphql-usando-httpcliente-do-angular)
+- [12. Usando o Apollo GraphQl Client](#12-usando-o-apollo-graphql-client)
+  - [12.1. Apollo Link Error](#121-apollo-link-error)
+  - [12.2. Apollo Client Devtools](#122-apollo-client-devtools)
+- [13. Modularização no Angular](#13-modulariza%C3%A7%C3%A3o-no-angular)
+  - [13.1. Gerando o CoreModule](#131-gerando-o-coremodule)
+  - [13.2. Gerando o SharedModule](#132-gerando-o-sharedmodule)
+- [14. Novas atualizações com ng update](#14-novas-atualiza%C3%A7%C3%B5es-com-ng-update)
+- [15. Autenticação com Graphcool](#15-autentica%C3%A7%C3%A3o-com-graphcool)
+  - [15.1. Instalando o template](#151-instalando-o-template)
+- [16. Graphcool - File Management](#16-graphcool---file-management)
+- [17. Graphcool - Permission Queries](#17-graphcool---permission-queries)
+- [18. Guarda de rotas no Angular](#18-guarda-de-rotas-no-angular)
+- [19. Lazy Loading Feature Modules](#19-lazy-loading-feature-modules)
+- [20. Angular Routing & Navigation](#20-angular-routing--navigation)
 
 ----
 
-# Angular Graphcool Chat
+# 1. Angular Graphcool Chat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
-## Development server
+## 1.1. Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## 1.2. Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## 1.3. Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## 1.4. Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## 1.5. Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## 1.6. Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-# Padrão de mensagem de commit (CHANGELOG automatizados):
+# 2. Padrão de mensagem de commit (CHANGELOG automatizados):
 
 O projeto terá o controle de versão e a geração do CHANGELOG automatizados com mensagens de confirmação  convencionais seguindo o padrão estabelecido por este documento.
 
@@ -111,32 +112,32 @@ _Algumas regras:_
 3. O tipo `fix` DEVE ser usado quando um commit representa uma correção de bug para seu aplicativo.
 4. Um escopo opcional pode ser fornecido após um tipo. Um escopo é uma frase que descreve uma seção da base de código entre parênteses, por exemplo, `fix(parser)`:
 
-## Gerando o CHANGELOG do projeto
+## 2.1. Gerando o CHANGELOG do projeto
 
 ```sh
 npm run release -- --release-as 1.0.0
 ```
 
-## Referências:
+## 2.2. Referências:
 [Standard Version](https://github.com/conventional-changelog/standard-version/blob/master/README.md)
 
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
 
-# Baseado no curso
+# 3. Baseado no curso
 
 https://github.com/plinionaves/angular-graphcool-chat
 
-# Inciando novo projeto
+# 4. Inciando novo projeto
 
 `ng new angular-graphcoll-chat --style=scss`
 
-# Angular Material
+# 5. Angular Material
 
 [Material Design components for Angular](https://material.angular.io/)
 
 `ng add @angular/material`
 
-# Sobre GraphQL
+# 6. Sobre GraphQL
 
 - __Type system__: Sistema de tipos que usamos para descrever nossos dados;
 - __Queries__: Obtém dados da nossa API (read);
@@ -144,28 +145,28 @@ https://github.com/plinionaves/angular-graphcool-chat
 - __Subcriptions__: Permite ouvir mudanças em "tempo real" (real-time);
 - __Schema__: Define o "Esquema" da nossa API, pense nele com um container para todos os tipos da nossa API (SDL).
 
-# GraphQL - Documentação, Referências, Artigos
+# 7. GraphQL - Documentação, Referências, Artigos
 
 - __Documentação Oficial__: http://graphql.org
 - __Referência__: https://howtographql.com
 - __Apollo GraphQL__: https://www.apollographql.com
 - __Blog Apollo Data__: https://dev-blog.apollodata.com
 
-# Graphcool
+# 8. Graphcool
 
 Necessário criar uma conta no Graphcool
 
 https://www.graph.cool/
 
-# Instalando o Graphcool
+# 9. Instalando o Graphcool
 
 `npm -g i graphcool`
 
-## DOC
+## 9.1. DOC
 
 https://www.graph.cool/docs/reference/graphcool-cli/commands-aiteerae6l
 
-## Iniciando e criando o projeto backend com Graphcool
+## 9.2. Iniciando e criando o projeto backend com Graphcool
 
 Criar dentro do próprio projeto, apenas para estudo. Em projetos oficiais, criar fora do projeto frontend.
 
@@ -173,11 +174,11 @@ Será criado um diretório graphcool dentro do projeto.
 
 `graphcool init graphcool`
 
-# Plugin para Visual Studio - GraphQL for VSCode
+# 10. Plugin para Visual Studio - GraphQL for VSCode
 
 [GraphQL for VSCode](https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode)
 
-# Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular
+# 11. Exemplo de chamada para o endpoint GraphQl usando HttpCliente do Angular
 
 ```javascript
 constructor(private http: HttpClient) {
@@ -227,7 +228,7 @@ constructor(private http: HttpClient) {
   }
 ```
 
-# Usando o Apollo GraphQl Client
+# 12. Usando o Apollo GraphQl Client
 
 [apollographql.com](https://www.apollographql.com/)
 
@@ -239,13 +240,13 @@ Já há suporte ao `ng add`
 
 `ng add apollo-angular`
 
-## Apollo Link Error
+## 12.1. Apollo Link Error
 
 O Apollo Link é um sistema de componentes modulares para redes GraphQL. 
 
 `npm i -E -S apollo-link-error`
 
-## Apollo Client Devtools
+## 12.2. Apollo Client Devtools
 
 [apollo-client-devtools](https://github.com/apollographql/apollo-client-devtools)
 
@@ -256,7 +257,7 @@ Os devtools aparecem como uma guia "Apollo" no seu inspetor do Google Chrome, ao
 - __Inspetor de armazenamento normalizado__: visualize sua loja GraphQL da maneira que o Apollo Client a vê e pesquise por nomes ou valores de campo.
 - __Inspetor de consulta assistida__: visualize consultas e variáveis ​​ativas e localize os componentes da interface do usuário associados.
 
-# Modularização no Angular
+# 13. Modularização no Angular
 
 CoreModule   | SharedModule
 --------- | ------
@@ -265,7 +266,7 @@ Single-instance components | FormsModule
 O que o AppComponent precisa | Components/Pipes/Directives
  x | Dump Components
 
-## Gerando o CoreModule
+## 13.1. Gerando o CoreModule
 
 - Gera sem modificação:
 
@@ -275,7 +276,7 @@ O que o AppComponent precisa | Components/Pipes/Directives
 
 `ng g m core`
 
-## Gerando o SharedModule
+## 13.2. Gerando o SharedModule
 
 - Gera sem modificação:
 
@@ -285,7 +286,7 @@ O que o AppComponent precisa | Components/Pipes/Directives
 
 `ng g m shared`
 
-# Novas atualizações com ng update
+# 14. Novas atualizações com ng update
 
 `ng update`
 
@@ -293,17 +294,17 @@ O que o AppComponent precisa | Components/Pipes/Directives
 
 `ng update @angular/material`
 
-# Autenticação com Graphcool
+# 15. Autenticação com Graphcool
 
 Use os modelos Graphcool para inserir rapidamente a funcionalidade predefinida em seu próprio serviço Graphcool.
 
 (graphcool-templates)[https://github.com/prisma-archive/graphcool-templates]
 
-## Instalando o template
+## 15.1. Instalando o template
 
 `gcf add-template auth/email-password`
 
-# Graphcool - File Management
+# 16. Graphcool - File Management
 
 https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0
 
@@ -311,11 +312,11 @@ https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0#fil
 
 https://www.graph.cool/docs/reference/graphql-api/file-management-eer4wiang0#file-upload-and-permissions
 
-# Graphcool - Permission Queries
+# 17. Graphcool - Permission Queries
 
 https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3aqu0ee
 
-# Guarda de rotas no Angular
+# 18. Guarda de rotas no Angular
 
 - __CanActivate__: Intermedia a nagevação para uma rota;
 - __CanActiveChild__: intermedia a navegação para uma rota filha;
@@ -323,6 +324,14 @@ https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3
 - __CanLoad__: Intermedia a navegação para um módulo "Lazy Loading";
 - __Resolve__: Para executar a "recuperação" de dados (ex id) antes de ativar a rota;
 
-# Lazy Loading Feature Modules
+# 19. Lazy Loading Feature Modules
 
 [angular.io/guide/lazy-loading-ngmodules](https://angular.io/guide/lazy-loading-ngmodules)
+
+# 20. Angular Routing & Navigation
+
+- The __CanActivate__ guard (verificando o acesso à rota).
+- The __CanActivateChild__ guard (verificando o acesso da rota filho).
+- The __CanDeactivate__ guard (peça permissão para descartar as alterações não salvas).
+- The __Resolve__ guard (pré-busca de dados de rota).
+- The __CanLoad__ guard (verifique antes de carregar os recursos do módulo de recursos).

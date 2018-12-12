@@ -7,6 +7,7 @@ import { ChatUsersComponent } from './components/chat-users/chat-users.component
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { ChatService } from './services/chat.service';
+import { ChatWindowResolver } from './components/chat-window/chat-window-resolver';
 
 @NgModule({
   declarations: [ChatTabComponent, ChatUsersComponent, ChatListComponent, ChatWindowComponent],
@@ -15,7 +16,8 @@ import { ChatService } from './services/chat.service';
     ChatRoutingModule
   ],
   providers: [
-    ChatService
+    ChatService,
+    ChatWindowResolver
   ]
 })
 export class ChatModule { }

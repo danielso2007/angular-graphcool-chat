@@ -1,3 +1,4 @@
+import { ChatWindowResolver } from './components/chat-window/chat-window-resolver';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatTabComponent } from './components/chat-tab/chat-tab.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   {
     path: ':id',
     component: ChatWindowComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuard ],
+    resolve: { chat: ChatWindowResolver }
   }
 ];
 

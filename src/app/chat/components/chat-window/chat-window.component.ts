@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Chat } from '../../models/chat.model';
 import { Subscription } from 'apollo-client/util/Observable';
-import { map } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat-window',
@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class ChatWindowComponent implements OnInit, OnDestroy {
 
   chat: Chat;
+  recipientId: string = null;
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -21,7 +22,14 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.router.data
     .pipe(
-      map(routerData => this.chat = routerData.chat)
+      map(routerData => this.chat = routerData.chat),
+      mergeMap(() => this.router.paramMap),
+      tap((params: ParamMap) => {
+        if (!this.chat) {
+          this.recipientId = params.get('id');
+          console.log('User id: ', this.recipientId);
+        }
+      })
     )
     .subscribe();
   }

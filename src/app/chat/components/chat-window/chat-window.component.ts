@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat-window',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatWindowComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.router.data.subscribe(console.log);
   }
 
 }

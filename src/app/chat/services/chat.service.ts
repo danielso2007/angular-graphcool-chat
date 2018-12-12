@@ -39,7 +39,7 @@ export class ChatService {
       query: CHAT_BY_ID_OR_BY_USERS_QUERY,
       variables: {
         chatId: chatOrUserId,
-        loggerUserID: this.authService.authUser.id,
+        loggedUserId: this.authService.authUser.id,
         targetUserId: chatOrUserId
       }
     }).pipe(

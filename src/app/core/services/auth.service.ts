@@ -12,17 +12,25 @@ import { catchError, map, tap, mergeMap, take } from 'rxjs/operators';
 import { StorageKeys } from '../../storage-keys';
 import { Base64 } from 'js-base64';
 import { LoggedInUserQuery, LOGGED_IN_USER_QUERY } from './auth.graphql';
+import { User } from '../models/user.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  authUser: User;
   private _isAuthenticated = new ReplaySubject<boolean>(1);
   redirectUrl: string;
   keepSigned: boolean;
   rememberMe: boolean;
 
-  constructor(private apollo: Apollo, private apolloConfigModule: ApolloConfigModule, private router: Router) {
+  constructor(
+        private apollo: Apollo,
+        private apolloConfigModule: ApolloConfigModule,
+        private router: Router,
+        private userService: UserService) {
     this.init();
     this._isAuthenticated.subscribe(is => console.log('AuthSate: ', is));
     // Teste
@@ -175,11 +183,10 @@ export class AuthService {
   }
 
   private setAuthUser(userId: string): Observable<any> {
-    // return this.userService.getUserById(userId)
-    //   .pipe(
-    //     tap((user: User) => this.authUser = user)
-    //   );
-    return Observable.create();
+    return this.userService.getUserById(userId)
+      .pipe(
+        tap((user: User) => this.authUser = user)
+      );
   }
 
   private setAuthState(authData: { id: string; token: string; isAuthenticated: boolean }, isRefresh: boolean = false): void {

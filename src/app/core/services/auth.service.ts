@@ -183,12 +183,10 @@ export class AuthService {
   }
 
   private setAuthUser(userId: string): Observable<any> {
-    this.authUser = {id: userId};
-    // return this.userService.getUserById(userId)
-    //   .pipe(
-    //     tap((user: User) => this.authUser = user)
-    //   );
-      return of();
+    return this.userService.getUserById(userId)
+      .pipe(
+        tap((user: User) => this.authUser = user)
+      );
   }
 
   private setAuthState(authData: { id: string; token: string; isAuthenticated: boolean }, isRefresh: boolean = false): void {

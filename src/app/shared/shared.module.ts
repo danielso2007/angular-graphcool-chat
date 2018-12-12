@@ -13,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material';
 
 @NgModule({
   exports: [
@@ -28,7 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSlideToggleModule,
     MatListModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   declarations: []
 })

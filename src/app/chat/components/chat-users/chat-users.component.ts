@@ -19,10 +19,7 @@ export class ChatUsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.users$ = this.userService.allUsers(this.authService.authUser.id);
-    setTimeout(() => {
-      this.users$ = of([]);
-    });
+    this.users$ = this.userService.allUsers(this.authService.authUser.id);
   }
 
 }

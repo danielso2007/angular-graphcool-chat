@@ -6,8 +6,13 @@ export interface AllUserQuery {
 }
 
 export const ALL_USERS_QUERY = gql`
-  query AllUsersQuery {
-    allUsers( orderBy: name_ASC ) {
+  query AllUsersQuery($idToExclude: ID!) {
+    allUsers(
+          orderBy: name_ASC,
+          filter: {
+            id_not: $idToExclude
+          }
+      ) {
       id
       name
       email

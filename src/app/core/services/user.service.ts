@@ -12,10 +12,13 @@ export class UserService {
 
   constructor(private apollo: Apollo) { }
 
-  allUsers(): Observable<User[]> {
+  allUsers(idToExclude: string): Observable<User[]> {
     return this.apollo
          .query<AllUserQuery>({
-          query: ALL_USERS_QUERY
+          query: ALL_USERS_QUERY,
+          variables: {
+            idToExclude
+          }
          }).pipe(
           map(res => res.data.allUsers),
           catchError(err => throwError(err))

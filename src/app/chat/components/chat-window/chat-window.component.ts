@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Chat } from '../../models/chat.model';
 import { Subscription } from 'apollo-client/util/Observable';
@@ -17,7 +17,7 @@ import { Message } from '../../models/message.model';
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.scss']
 })
-export class ChatWindowComponent implements OnInit, OnDestroy {
+export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewInit {
 
   chat: Chat;
   messages$: Observable<Message[]>;
@@ -25,6 +25,8 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
   newMessage = '';
   alreadyLoadedMessages = false;
   private subscriptions: Subscription[] = [];
+
+  @ViewChild('content') private content: ElementRef;
 
   constructor(
     public authService: AuthService,
@@ -65,6 +67,14 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
     this.title.setTitle('Angular Graphcool Chat');
   }
 
+  ngAfterViewInit(): void {
+    this.subscriptions.push(
+      // this.messagesQueryList.changes.subscribe(() => {
+      //   this.scrollToBottom('smooth');
+      // })
+    );
+  }
+
   sendMessage(): void {
     this.newMessage = this.newMessage.trim();
     if (this.newMessage) {
@@ -77,10 +87,27 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
         this.newMessage = '';
 
       } else {
-        // this.createPrivateChat();
+        this.createPrivateChat();
       }
 
     }
+  }
+
+  private createPrivateChat(): void {
+    this.chatService.createPrivateChat(this.recipientId)
+      .pipe(
+        take(1),
+        tap((chat: Chat) => {
+          this.chat = chat;
+          this.sendMessage();
+        })
+      ).subscribe();
+  }
+
+  private scrollToBottom(behavior: string = 'auto', block: string = 'end'): void {
+    setTimeout(() => {
+      this.content.nativeElement.scrollIntoView({ behavior, block });
+    }, 0);
   }
 
   private createMessage(): Observable<Message> {

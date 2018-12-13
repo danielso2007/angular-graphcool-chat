@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Chat } from '../../models/chat.model';
 import { ChatService } from '../../services/chat.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { Chat } from '../../models/chat.model';
 
 @Component({
   selector: 'app-chat-list',

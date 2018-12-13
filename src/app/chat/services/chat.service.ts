@@ -31,7 +31,7 @@ export class ChatService {
         loggedUserId: this.authService.authUser ? this.authService.authUser.id : ''
       }
     }).pipe(
-      map(res => res.data.allChats),
+      map(res => res.data.allChats.slice().map(chat => new Chat(chat))),
       map((chats: Chat[]) => {
         const chatsToSort = chats.slice();
         return chatsToSort.sort((a, b) => {

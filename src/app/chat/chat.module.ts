@@ -8,6 +8,7 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { ChatService } from './services/chat.service';
 import { ChatWindowResolver } from './components/chat-window/chat-window-resolver';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [ChatTabComponent, ChatUsersComponent, ChatListComponent, ChatWindowComponent],
@@ -17,6 +18,7 @@ import { ChatWindowResolver } from './components/chat-window/chat-window-resolve
   ],
   providers: [
     ChatService,
+    MessageService,
     ChatWindowResolver
   ]
 })

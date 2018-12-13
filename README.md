@@ -12,7 +12,6 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 ----
-
 - [1. Angular Graphcool Chat](#1-angular-graphcool-chat)
   - [1.1. Development server](#11-development-server)
   - [1.2. Code scaffolding](#12-code-scaffolding)
@@ -48,6 +47,7 @@
 - [18. Guarda de rotas no Angular](#18-guarda-de-rotas-no-angular)
 - [19. Lazy Loading Feature Modules](#19-lazy-loading-feature-modules)
 - [20. Angular Routing & Navigation](#20-angular-routing--navigation)
+- [21. World Clock API](#21-world-clock-api)
 
 ----
 
@@ -335,3 +335,9 @@ https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3
 - The __CanDeactivate__ guard (peça permissão para descartar as alterações não salvas).
 - The __Resolve__ guard (pré-busca de dados de rota).
 - The __CanLoad__ guard (verifique antes de carregar os recursos do módulo de recursos).
+
+# 21. World Clock API
+
+REST Services that will return current date/time in JSON for any registered time zone.
+
+http://worldclockapi.com/

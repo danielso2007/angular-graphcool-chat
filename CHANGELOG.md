@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/danielso2007/angular-graphcool-chat/compare/v0.2.0...v1.0.0) (2018-12-13)
+
+
+### Bug Fixes
+
+* Correção do parâmetro do método getChatByIdOrUsers. ([1a74240](https://github.com/danielso2007/angular-graphcool-chat/commit/1a74240))
+
+
+### Features
+
+* Apollo Devtools e normalização do ID no Apollo Cache In Memory. ([ae493f6](https://github.com/danielso2007/angular-graphcool-chat/commit/ae493f6))
+* Capturando o Chat no ChatWindowComponent. ([b341440](https://github.com/danielso2007/angular-graphcool-chat/commit/b341440))
+* ChatMessageComponent para cada mensagem com Angular CLI. ([6e63bd8](https://github.com/danielso2007/angular-graphcool-chat/commit/6e63bd8))
+* ChatService com Angular CLI. ([2ec1087](https://github.com/danielso2007/angular-graphcool-chat/commit/2ec1087))
+* ChatService: buscando Chat por id ou por usuários na mesma requ. ([645d01b](https://github.com/danielso2007/angular-graphcool-chat/commit/645d01b))
+* ChatWindowComponent para troca de mensagens. ([ca3a26b](https://github.com/danielso2007/angular-graphcool-chat/commit/ca3a26b))
+* ChatWindowComponent: interface para enviar novas mensagens. ([a278080](https://github.com/danielso2007/angular-graphcool-chat/commit/a278080))
+* Configurando Resolve Guard na rota. ([83da1f0](https://github.com/danielso2007/angular-graphcool-chat/commit/83da1f0))
+* Criando ChatModel e MessageModel. ([f0e52bd](https://github.com/danielso2007/angular-graphcool-chat/commit/f0e52bd))
+* Criando novo Chat privado ao enviar nova mensagem. ([fbaa461](https://github.com/danielso2007/angular-graphcool-chat/commit/fbaa461))
+* Dica: loading antes de exibir o nome. ([438d964](https://github.com/danielso2007/angular-graphcool-chat/commit/438d964))
+* Exibindo nome do usuário ou titulo do chat na toolbar. ([59541f7](https://github.com/danielso2007/angular-graphcool-chat/commit/59541f7))
+* FromNowPipe para formatar data da mensagem. ([8098deb](https://github.com/danielso2007/angular-graphcool-chat/commit/8098deb))
+* FromNowPipe: tratando atrasos e avanços do relógio. ([744125f](https://github.com/danielso2007/angular-graphcool-chat/commit/744125f))
+* Graphql Fragments. ([3767356](https://github.com/danielso2007/angular-graphcool-chat/commit/3767356))
+* Identificando se o id da rota é do Chat ou do Usuário. ([d6ae0ef](https://github.com/danielso2007/angular-graphcool-chat/commit/d6ae0ef))
+* Listando Chats no ChatListComponent ([376d05d](https://github.com/danielso2007/angular-graphcool-chat/commit/376d05d))
+* Listando mensagens do Chat no ChatWindowComponent. ([722422f](https://github.com/danielso2007/angular-graphcool-chat/commit/722422f))
+* MessageService com Angular CLI. ([94995df](https://github.com/danielso2007/angular-graphcool-chat/commit/94995df))
+* Método no ChatService para buscar lista de chats. ([131eb31](https://github.com/danielso2007/angular-graphcool-chat/commit/131eb31))
+* Método para criar novas mensagens. ([d9aafe5](https://github.com/danielso2007/angular-graphcool-chat/commit/d9aafe5))
+* Ordenando Chats pela última mensagem ou data de criação. ([b2f43e0](https://github.com/danielso2007/angular-graphcool-chat/commit/b2f43e0))
+* Otimizando renderização do ngFor com trackByFunction. ([2e11994](https://github.com/danielso2007/angular-graphcool-chat/commit/2e11994))
+* Query na API para listar mensagens de determinado Chat. ([c503d10](https://github.com/danielso2007/angular-graphcool-chat/commit/c503d10))
+* Usando AvatarComponent na lista de chats e de usuários. ([1349889](https://github.com/danielso2007/angular-graphcool-chat/commit/1349889))
+* UserService: método para buscar usuário por id. ([6757bed](https://github.com/danielso2007/angular-graphcool-chat/commit/6757bed))
+
+
+### BREAKING CHANGES
+
+* Atualização para o angular 7.1.3
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/danielso2007/angular-graphcool-chat/compare/v0.1.0...v0.2.0) (2018-12-12)
 

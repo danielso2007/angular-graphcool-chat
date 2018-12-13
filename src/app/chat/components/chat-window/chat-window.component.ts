@@ -11,13 +11,14 @@ import { ChatService } from '../../services/chat.service';
 import { MessageService } from '../../services/message.service';
 import { Observable, of } from 'rxjs';
 import { Message } from '../../models/message.model';
+import { BaseComponent } from '../../../shared/components/base.component';
 
 @Component({
   selector: 'app-chat-window',
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.scss']
 })
-export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, OnDestroy, AfterViewInit {
 
   chat: Chat;
   messages$: Observable<Message[]>;
@@ -29,13 +30,13 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('content') private content: ElementRef;
 
   constructor(
-    public authService: AuthService,
+    protected authService: AuthService,
     private chatService: ChatService,
     private messageService: MessageService,
     private route: ActivatedRoute,
     private title: Title,
     private userService: UserService
-  ) { }
+  ) { super(); }
 
   ngOnInit() {
     this.title.setTitle('Loading...');
@@ -123,10 +124,6 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       })
     );
-  }
-
-  trackByFn(index: number, item: Chat): string {
-    return item.id;
   }
 
 }

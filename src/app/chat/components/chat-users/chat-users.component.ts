@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../../../core/models/user.model';
 import { UserService } from '../../../core/services/user.service';
+import { BaseComponent } from '../../../shared/components/base.component';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -9,14 +10,14 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './chat-users.component.html',
   styleUrls: ['./chat-users.component.scss']
 })
-export class ChatUsersComponent implements OnInit {
+export class ChatUsersComponent extends BaseComponent<User> implements OnInit {
 
   users$: Observable<User[]>;
 
   constructor(
     private userService: UserService,
-    private authService: AuthService
-  ) { }
+    protected authService: AuthService
+  ) { super(); }
 
   ngOnInit() {
     this.users$ = this.userService.allUsers(this.authService.authUser.id);

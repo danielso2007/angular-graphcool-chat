@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ChatService } from '../../services/chat.service';
-import { AuthService } from '../../../core/services/auth.service';
 import { Chat } from '../../models/chat.model';
+import { BaseComponent } from '../../../shared/components/base.component';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.scss']
 })
-export class ChatListComponent implements OnInit {
+export class ChatListComponent extends BaseComponent<Chat> implements OnInit {
 
   chats$: Observable<Chat[]>;
 
   constructor(
     private chatService: ChatService,
-    private authService: AuthService
-  ) {}
+    protected authService: AuthService
+  ) { super(); }
 
   ngOnInit() {
     this.chats$ = this.chatService.getUserChats();

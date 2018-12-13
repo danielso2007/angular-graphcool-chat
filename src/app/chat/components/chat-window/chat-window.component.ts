@@ -22,6 +22,8 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
   chat: Chat;
   messages$: Observable<Message[]>;
   recipientId: string = null;
+  newMessage = '';
+  alreadyLoadedMessages = false;
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -50,6 +52,7 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
           } else {
             this.title.setTitle(this.chat.title || this.chat.users[0].name);
             this.messages$ = this.messageService.getChatMessages(this.chat.id);
+            this.alreadyLoadedMessages = true;
           }
         })
       )
@@ -60,6 +63,21 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
     this.title.setTitle('Angular Graphcool Chat');
+  }
+
+  private createMessage(): Observable<Message> {
+    return this.messageService.createMessage({
+      text: this.newMessage,
+      chatId: this.chat.id,
+      senderId: this.authService.authUser.id
+    }).pipe(
+      tap(message => {
+        if (!this.alreadyLoadedMessages) {
+          this.messages$ = this.messageService.getChatMessages(this.chat.id);
+          this.alreadyLoadedMessages = true;
+        }
+      })
+    );
   }
 
 }

@@ -10,6 +10,9 @@ import {
 } from './message.graphql';
 import { Message } from '../models/message.model';
 import { User } from '../../core/models/user.model';
+import { CREATE_MESSAGE_MUTATION } from './message.graphql';
+import { AllChatsQuery, USER_CHATS_QUERY } from './chat.graphql';
+import { DataProxy } from 'apollo-cache';
 
 @Injectable()
 export class MessageService {
@@ -34,85 +37,85 @@ export class MessageService {
       );
   }
 
-  // createMessage(message: {
-  //   text: string;
-  //   chatId: string;
-  //   senderId: string;
-  // }): Observable<Message> {
-  //   return this.apollo
-  //     .mutate({
-  //       mutation: CREATE_MESSAGE_MUTATION,
-  //       variables: message,
-  //       optimisticResponse: {
-  //         __typename: 'Mutation',
-  //         createMessage: {
-  //           __typename: 'Message',
-  //           id: '',
-  //           text: message.text,
-  //           createdAt: new Date().toISOString(),
-  //           sender: {
-  //             __typename: 'User',
-  //             id: message.senderId,
-  //             name: this.authService.authUser.name,
-  //             email: '',
-  //             createdAt: '',
-  //             photo: {
-  //               __typename: 'File',
-  //               id: '',
-  //               secret:
-  //                 (this.authService.authUser.photo &&
-  //                   this.authService.authUser.photo.secret) ||
-  //                 ''
-  //             }
-  //           },
-  //           chat: {
-  //             __typename: 'Chat',
-  //             id: message.chatId
-  //           }
-  //         }
-  //       },
-  //       update: (store: DataProxy, { data: { createMessage } }) => {
-  //         this.readAndWriteQuery<Message>({
-  //           store,
-  //           newRecord: createMessage,
-  //           query: GET_CHAT_MESSAGES_QUERY,
-  //           queryName: 'allMessages',
-  //           arrayOperation: 'push',
-  //           variables: { chatId: message.chatId }
-  //         });
+  createMessage(message: {
+    text: string;
+    chatId: string;
+    senderId: string;
+  }): Observable<Message> {
+    return this.apollo
+      .mutate({
+        mutation: CREATE_MESSAGE_MUTATION,
+        variables: message,
+        optimisticResponse: {
+          __typename: 'Mutation',
+          createMessage: {
+            __typename: 'Message',
+            id: '',
+            text: message.text,
+            createdAt: new Date().toISOString(),
+            sender: {
+              __typename: 'User',
+              id: message.senderId,
+              name: this.authService.authUser.name,
+              email: '',
+              createdAt: '',
+              photo: {
+                __typename: 'File',
+                id: '',
+                secret:
+                  (this.authService.authUser.photo &&
+                    this.authService.authUser.photo.secret) ||
+                  ''
+              }
+            },
+            chat: {
+              __typename: 'Chat',
+              id: message.chatId
+            }
+          }
+        },
+        update: (store: DataProxy, { data: { createMessage } }) => {
+          // this.readAndWriteQuery<Message>({
+          //   store,
+          //   newRecord: createMessage,
+          //   query: GET_CHAT_MESSAGES_QUERY,
+          //   queryName: 'allMessages',
+          //   arrayOperation: 'push',
+          //   variables: { chatId: message.chatId }
+          // });
 
-  //         try {
-  //           const userChatsVariables = {
-  //             loggedUserId: this.authService.authUser.id
-  //           };
+          try {
+            const userChatsVariables = {
+              loggedUserId: this.authService.authUser.id
+            };
 
-  //           const userChatsData = store.readQuery<AllChatsQuery>({
-  //             query: USER_CHATS_QUERY,
-  //             variables: userChatsVariables
-  //           });
+            const userChatsData = store.readQuery<AllChatsQuery>({
+              query: USER_CHATS_QUERY,
+              variables: userChatsVariables
+            });
 
-  //           const newUserChatsList = [...userChatsData.allChats];
+            const newUserChatsList = [...userChatsData.allChats];
 
-  //           newUserChatsList.map(c => {
-  //             if (c.id === createMessage.chat.id) {
-  //               c.messages = [createMessage];
-  //             }
-  //             return c;
-  //           });
+            newUserChatsList.map(c => {
+              if (c.id === createMessage.chat.id) {
+                c.messages = [createMessage];
+              }
+              return c;
+            });
 
-  //           userChatsData.allChats = newUserChatsList;
+            userChatsData.allChats = newUserChatsList;
 
-  //           store.writeQuery({
-  //             query: USER_CHATS_QUERY,
-  //             variables: userChatsVariables,
-  //             data: userChatsData
-  //           });
-  //         } catch (e) {
-  //           console.log(`Query allChats not found in cache!`);
-  //         }
-  //       }
-  //     })
-  //     .pipe(map(res => res.data.createMessage));
-  // }
+            store.writeQuery({
+              query: USER_CHATS_QUERY,
+              variables: userChatsVariables,
+              data: userChatsData
+            });
+          } catch (e) {
+            console.log(`Query allChats not found in cache!`);
+          }
+        }
+      })
+      .pipe(map(res => res.data.createMessage));
+  }
 
 }

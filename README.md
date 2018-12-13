@@ -50,6 +50,10 @@
 - [21. World Clock API](#21-world-clock-api)
 - [22. Graphql Fragments](#22-graphql-fragments)
 - [23. Apollo Using Fragments](#23-apollo-using-fragments)
+- [24. Apollo Client developer tools](#24-apollo-client-developer-tools)
+- [25. Apollo Queries](#25-apollo-queries)
+- [26. Apollo Direct Cache Access](#26-apollo-direct-cache-access)
+- [27. Apollo Optimistic UI](#27-apollo-optimistic-ui)
 
 ----
 
@@ -360,3 +364,34 @@ Um fragmento GraphQL é uma parte compartilhada da lógica de consulta.
 [apollographql.com/docs/angular/features/fragments](https://www.apollographql.com/docs/angular/features/fragments.html)
 
 [github.com/facebook/graphql](https://github.com/facebook/graphql/issues/204)
+
+
+# 24. Apollo Client developer tools
+
+Chrome extension for Apollo Client developer tools
+
+[apollographql/apollo-client-devtools](https://github.com/apollographql/apollo-client-devtools)
+
+[chrome.google.com/webstore/detail/apollo-client-developer-t](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm)
+
+# 25. Apollo Queries
+
+Nesta página, você pode aprender a usar o Apollo para anexar os resultados da consulta GraphQL à sua interface de usuário angular. Este guia pressupõe alguma familiaridade com o próprio GraphQL. Você pode ler em detalhes as consultas do GraphQL em graphql.org .
+
+Um dos nossos principais valores é “é apenas GraphQL”. Ao usar o Apollo Client, você não precisa aprender nada de especial sobre a sintaxe da consulta, já que tudo é apenas GraphQL padrão. Qualquer coisa que você pode digitar no IDE de consulta do GraphQL, você também pode colocar em seu código do Apollo Client.
+
+[apollographql.com/docs/angular/basics/queries](https://www.apollographql.com/docs/angular/basics/queries.html)
+
+# 26. Apollo Direct Cache Access
+
+O Apollo Client normaliza todos os seus dados, de modo que, se quaisquer dados que você buscou anteriormente em seu servidor GraphQL forem atualizados em uma busca posterior de dados do seu servidor, seus dados serão atualizados com a verdade mais recente do seu servidor.
+
+[apollographql.com/docs/angular/features/caching](https://www.apollographql.com/docs/angular/features/caching.html)
+
+# 27. Apollo Optimistic UI
+
+Conforme explicado na seção de mutações , a UI otimista é um padrão que você pode usar para simular os resultados de uma mutação e atualizar a interface do usuário antes mesmo de receber uma resposta do servidor. Quando a resposta é recebida do servidor, o resultado otimista é descartado e substituído pelo resultado real.
+
+A interface do usuário otimista fornece uma maneira fácil de fazer com que sua interface do usuário responda de maneira muito mais rápida, garantindo que os dados se tornem consistentes com a resposta real quando ela chegar.
+
+[apollographql.com/docs/angular/features/optimistic-ui](https://www.apollographql.com/docs/angular/features/optimistic-ui.html)

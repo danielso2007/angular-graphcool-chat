@@ -71,7 +71,12 @@ export class ApolloConfigModule {
 
     this.subscriptionClient = (<any>ws).subscriptionClient;
 
-    const cache = new InMemoryCache();
+    const cache = new InMemoryCache({
+      dataIdFromObject: (object: any) => {
+        console.log('InMemoryCache ==> ', object);
+        return object.id;
+      }
+    });
 
     this.cachePersistor = new CachePersistor({
       cache,

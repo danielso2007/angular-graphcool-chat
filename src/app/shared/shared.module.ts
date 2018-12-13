@@ -15,9 +15,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material';
 import { NoRecordComponent } from './components/no-record/no-record.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
-  imports: [MatIconModule],
+  imports: [MatIconModule, CommonModule],
   exports: [
     CommonModule,
     MatCardModule,
@@ -33,8 +34,9 @@ import { NoRecordComponent } from './components/no-record/no-record.component';
     MatSidenavModule,
     MatIconModule,
     MatTabsModule,
-    NoRecordComponent
+    NoRecordComponent,
+    AvatarComponent
   ],
-  declarations: [NoRecordComponent]
+  declarations: [NoRecordComponent, AvatarComponent]
 })
 export class SharedModule {}

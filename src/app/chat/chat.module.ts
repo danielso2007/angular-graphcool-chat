@@ -10,9 +10,10 @@ import { ChatService } from './services/chat.service';
 import { ChatWindowResolver } from './components/chat-window/chat-window-resolver';
 import { MessageService } from './services/message.service';
 import { FormsModule } from '@angular/forms';
+import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 
 @NgModule({
-  declarations: [ChatTabComponent, ChatUsersComponent, ChatListComponent, ChatWindowComponent],
+  declarations: [ChatTabComponent, ChatUsersComponent, ChatListComponent, ChatWindowComponent, ChatMessageComponent],
   imports: [
     SharedModule,
     FormsModule,

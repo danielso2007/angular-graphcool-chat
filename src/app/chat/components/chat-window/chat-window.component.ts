@@ -125,4 +125,8 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
+  trackByFn(index: number, item: Chat): string {
+    return item.id;
+  }
+
 }

@@ -48,6 +48,8 @@
 - [19. Lazy Loading Feature Modules](#19-lazy-loading-feature-modules)
 - [20. Angular Routing & Navigation](#20-angular-routing--navigation)
 - [21. World Clock API](#21-world-clock-api)
+- [22. Graphql Fragments](#22-graphql-fragments)
+- [23. Apollo Using Fragments](#23-apollo-using-fragments)
 
 ----
 
@@ -341,3 +343,20 @@ https://www.graph.cool/docs/reference/auth/authorization/permission-queries-iox3
 REST Services that will return current date/time in JSON for any registered time zone.
 
 http://worldclockapi.com/
+
+
+# 22. Graphql Fragments
+
+Digamos que tenhamos uma página relativamente complicada em nosso aplicativo, o que nos permite ver dois heróis lado a lado, junto com os amigos deles. Você pode imaginar que essa consulta poderia se complicar rapidamente, porque precisaríamos repetir os campos pelo menos uma vez - um para cada lado da comparação.
+
+É por isso que o GraphQL inclui unidades reutilizáveis ​​chamadas fragmentos . Os fragmentos permitem que você construa conjuntos de campos e os inclua em consultas onde você precisa.
+
+[graphql.org/learn/queries/#fragments](https://graphql.org/learn/queries/#fragments)
+
+# 23. Apollo Using Fragments
+
+Um fragmento GraphQL é uma parte compartilhada da lógica de consulta.
+
+[apollographql.com/docs/angular/features/fragments](https://www.apollographql.com/docs/angular/features/fragments.html)
+
+[github.com/facebook/graphql](https://github.com/facebook/graphql/issues/204)

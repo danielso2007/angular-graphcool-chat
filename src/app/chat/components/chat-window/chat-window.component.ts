@@ -65,6 +65,24 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
     this.title.setTitle('Angular Graphcool Chat');
   }
 
+  sendMessage(): void {
+    this.newMessage = this.newMessage.trim();
+    if (this.newMessage) {
+
+      if (this.chat) {
+
+        this.createMessage()
+          .pipe(take(1)).subscribe();
+
+        this.newMessage = '';
+
+      } else {
+        // this.createPrivateChat();
+      }
+
+    }
+  }
+
   private createMessage(): Observable<Message> {
     return this.messageService.createMessage({
       text: this.newMessage,

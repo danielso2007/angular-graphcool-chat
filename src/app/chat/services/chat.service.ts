@@ -27,7 +27,7 @@ export class ChatService {
     return this.apollo.query<AllChatsQuery>({
       query: USER_CHATS_QUERY,
       variables: {
-        loggedUserId: this.authService.authUser.id
+        loggedUserId: this.authService.authUser ? this.authService.authUser.id : ''
       }
     }).pipe(
       map(res => res.data.allChats)
@@ -39,7 +39,7 @@ export class ChatService {
       query: CHAT_BY_ID_OR_BY_USERS_QUERY,
       variables: {
         chatId: chatOrUserId,
-        loggedUserId: this.authService.authUser.id,
+        loggedUserId: this.authService.authUser ? this.authService.authUser.id : '',
         targetUserId: chatOrUserId
       }
     }).pipe(

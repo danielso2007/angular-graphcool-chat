@@ -50,7 +50,7 @@ export class MessageService extends BaseService {
           __typename: 'Mutation',
           createMessage: {
             __typename: 'Message',
-            id: '',
+            id: String(Math.random()),
             text: message.text,
             createdAt: new Date().toISOString(),
             sender: {

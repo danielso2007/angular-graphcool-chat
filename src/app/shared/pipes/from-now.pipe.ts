@@ -4,7 +4,7 @@ import { AppConfigService } from '../../core/services/app-config.service';
 
 @Pipe({
   name: 'fromNow',
-  pure: false
+  pure: false // Tornando fromNowPipe impuro
 })
 export class FromNowPipe implements PipeTransform {
   constructor(private appConfig: AppConfigService) {}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { AllChatsQuery, USER_CHATS_QUERY, ChatQuery, CHAT_BY_ID_OR_BY_USERS_QUERY, CREATE_PRIVATE_CHAT_MUTATION, USER_CHATS_SUBSCRIPTION } from './chat.graphql';
@@ -15,7 +15,7 @@ import { GET_CHAT_MESSAGES_QUERY, AllMessagesQuery, USER_MESSAGES_SUBSCRIPTION }
 import { Message } from '../models/message.model';
 
 @Injectable()
-export class ChatService extends BaseService {
+export class ChatService extends BaseService implements OnDestroy {
 
   chats$: Observable<Chat[]>;
   private queryRef: QueryRef<AllChatsQuery>;
@@ -32,7 +32,7 @@ export class ChatService extends BaseService {
     if (!this.chats$) {
       this.chats$ = this.getUserChats();
       this.subscriptions.push(this.chats$.subscribe());
-      this.subscriptions.push(
+      this.subscriptions.push( // Tratando unsubscribe por meio de eventos do Roteador do Angular
         this.router.events.subscribe((event: RouterEvent) => {
           if (event instanceof NavigationEnd && !this.router.url.includes('chat')) {
             this.stopChatsMonitoring();
@@ -200,4 +200,9 @@ export class ChatService extends BaseService {
       map(res => res.data.createChat)
     );
   }
+
+  ngOnDestroy(): void {
+    this.stopChatsMonitoring();
+  }
+
 }

@@ -18,7 +18,7 @@ export class ChatTabComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.chatService.startChatsMonitoring();
+      this.chatService.startChatsMonitoring(); // Monitorando lista de chats do usuário no ChatTabComponent
   }
 
 }

@@ -72,7 +72,7 @@ export class MessageService extends BaseService {
           }
         },
         update: (store: DataProxy, { data: { createMessage } }) => {
-          this.readAndWriteQuery<Message>({
+          this.readAndWriteQuery<Message>({ // Atualizando última mensagem enviada para o Chat
             store,
             newRecord: createMessage,
             query: GET_CHAT_MESSAGES_QUERY,
@@ -91,11 +91,11 @@ export class MessageService extends BaseService {
               variables: userChatsVariables
             });
 
-            const newUserChatsList = [...userChatsData.allChats];
+            const newUserChatsList = [...userChatsData.allChats]; // Atualizando última mensagem enviada para o Chat
 
             newUserChatsList.map(c => {
               if (c.id === createMessage.chat.id) {
-                c.messages = [createMessage];
+                c.messages = [createMessage]; // Atualizando a última mensagem do chat.
               }
               return c;
             });

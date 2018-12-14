@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Chat } from '../../models/chat.model';
 import { Subscription } from 'apollo-client/util/Observable';
@@ -12,6 +12,7 @@ import { MessageService } from '../../services/message.service';
 import { Observable, of } from 'rxjs';
 import { Message } from '../../models/message.model';
 import { BaseComponent } from '../../../shared/components/base.component';
+import { ChatMessageComponent } from '../chat-message/chat-message.component';
 
 @Component({
   selector: 'app-chat-window',
@@ -28,6 +29,7 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
   private subscriptions: Subscription[] = [];
 
   @ViewChild('content') private content: ElementRef;
+  @ViewChildren(ChatMessageComponent) private messagesQueryList: QueryList<ChatMessageComponent>;
 
   constructor(
     protected authService: AuthService,
@@ -69,9 +71,9 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
 
   ngAfterViewInit(): void {
     this.subscriptions.push(
-      // this.messagesQueryList.changes.subscribe(() => {
-      //   this.scrollToBottom('smooth');
-      // })
+      this.messagesQueryList.changes.subscribe(() => {
+        this.scrollToBottom('smooth');
+      })
     );
   }
 

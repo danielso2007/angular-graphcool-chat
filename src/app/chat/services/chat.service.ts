@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AllChatsQuery, USER_CHATS_QUERY, ChatQuery, CHAT_BY_ID_OR_BY_USERS_QUERY, CREATE_PRIVATE_CHAT_MUTATION, USER_CHATS_SUBSCRIPTION } from './chat.graphql';
 import { Chat } from '../models/chat.model';
 import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 import { Subscription } from 'apollo-client/util/Observable';
 import { map } from 'rxjs/operators';
@@ -28,6 +28,27 @@ export class ChatService extends BaseService {
     private userService: UserService
   ) { super(); }
 
+  startChatsMonitoring(): void {
+    if (!this.chats$) {
+      this.chats$ = this.getUserChats();
+      this.subscriptions.push(this.chats$.subscribe());
+      this.subscriptions.push(
+        this.router.events.subscribe((event: RouterEvent) => {
+          if (event instanceof NavigationEnd && !this.router.url.includes('chat')) {
+            this.stopChatsMonitoring();
+            this.userService.stopUsersMonitoring();
+          }
+        })
+      );
+    }
+  }
+
+  private stopChatsMonitoring(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions = [];
+    this.chats$ = null;
+  }
+
   getUserChats(): Observable<Chat[]> {
     this.queryRef = this.apollo.watchQuery<AllChatsQuery>({ // Monitorando Query da lista de chats com watchQuery
       query: USER_CHATS_QUERY,
@@ -42,7 +63,7 @@ export class ChatService extends BaseService {
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
 
-        const newChat: Chat = subscriptionData.data.Chat.node;
+        const newChat: Chat = subscriptionData.data['Chat'].node;
 
         if (previous.allChats.every(chat => chat.id !== newChat.id)) {
           return {
@@ -60,7 +81,7 @@ export class ChatService extends BaseService {
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
 
-        const newMessage: Message = subscriptionData.data.Message.node;
+        const newMessage: Message = subscriptionData.data['Message'].node;
 
         try {
 

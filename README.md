@@ -54,6 +54,7 @@
 - [25. Apollo Queries](#25-apollo-queries)
 - [26. Apollo Direct Cache Access](#26-apollo-direct-cache-access)
 - [27. Apollo Optimistic UI](#27-apollo-optimistic-ui)
+- [Apollo What is QueryRef](#apollo-what-is-queryref)
 
 ----
 
@@ -395,3 +396,19 @@ Conforme explicado na seção de mutações , a UI otimista é um padrão que vo
 A interface do usuário otimista fornece uma maneira fácil de fazer com que sua interface do usuário responda de maneira muito mais rápida, garantindo que os dados se tornem consistentes com a resposta real quando ela chegar.
 
 [apollographql.com/docs/angular/features/optimistic-ui](https://www.apollographql.com/docs/angular/features/optimistic-ui.html)
+
+# Apollo What is QueryRef
+
+Como você sabe, o Apollo.querymétodo retorna um Observável que emite um resultado, apenas uma vez. Apollo.watchQuerytambém faz o mesmo, exceto que pode emitir vários resultados. (A própria consulta GraphQL ainda é enviada apenas uma vez, mas a watchQuery observação também pode ser atualizada se, por exemplo, outra consulta fizer com que o objeto seja atualizado no cache global do Apollo Client.)
+
+Então, por que não Apollo.watchQueryexpor um Observable?
+
+O serviço Apollo e o ApolloClient compartilham praticamente a mesma API. Isso torna as coisas fáceis de entender e usar. Não há razão para mudar isso.
+
+Em ApolloClient.watchQueryretorna um Observable, mas não um padrão, ele contém muitos métodos úteis (como refetch()) para manipular a consulta assistida. Um Observável normal, tem apenas um método subscribe().
+
+Para usar o Apollo's Observable em RxJS, teríamos que abandonar esses métodos. Como eles são necessários para usar o Apollo em todo o seu potencial, tivemos que encontrar uma solução.
+
+É por isso que nós criamos QueryRef.
+
+[apollographql.com/docs/angular/basics/queries](https://www.apollographql.com/docs/angular/basics/queries.html#queryref)

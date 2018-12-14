@@ -16,16 +16,15 @@ import { DataProxy } from 'apollo-cache';
 
 @Injectable()
 export class MessageService {
+
   constructor(private apollo: Apollo, private authService: AuthService) {}
 
   getChatMessages(chatId: string): Observable<Message[]> {
-    return this.apollo
-      .watchQuery<AllMessagesQuery>({
+    return this.apollo.watchQuery<AllMessagesQuery>({
         query: GET_CHAT_MESSAGES_QUERY,
         variables: { chatId },
         fetchPolicy: 'network-only'
-      })
-      .valueChanges.pipe(
+      }).valueChanges.pipe( // valueChanges dá acesso ao Observable.
         map(res => res.data.allMessages),
         map(messages =>
           messages.map(m => {

@@ -54,8 +54,7 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
             this.messages$ = of([]);
           } else {
             this.title.setTitle(this.chat.title || this.chat.users[0].name);
-            this.messages$ = this.messageService.getChatMessages(this.chat.id);
-            this.alreadyLoadedMessages = true;
+            this.lerMensagens();
           }
         })
       )
@@ -74,6 +73,11 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
       //   this.scrollToBottom('smooth');
       // })
     );
+  }
+
+  private lerMensagens(): void {
+      this.messages$ = this.messageService.getChatMessages(this.chat.id);
+      this.alreadyLoadedMessages = true;
   }
 
   sendMessage(): void {
@@ -105,12 +109,6 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
       ).subscribe();
   }
 
-  private scrollToBottom(behavior: string = 'auto', block: string = 'end'): void {
-    setTimeout(() => {
-      this.content.nativeElement.scrollIntoView({ behavior, block });
-    }, 0);
-  }
-
   private createMessage(): Observable<Message> {
     return this.messageService.createMessage({
       text: this.newMessage,
@@ -119,11 +117,16 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
     }).pipe(
       tap(message => {
         if (!this.alreadyLoadedMessages) {
-          this.messages$ = this.messageService.getChatMessages(this.chat.id);
-          this.alreadyLoadedMessages = true;
+          this.lerMensagens();
         }
       })
     );
+  }
+
+  private scrollToBottom(behavior: string = 'auto', block: string = 'end'): void {
+    setTimeout(() => {
+      this.content.nativeElement.scrollIntoView({ behavior, block });
+    }, 0);
   }
 
 }

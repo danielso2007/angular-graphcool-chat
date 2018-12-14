@@ -46,8 +46,14 @@ export class AuthService {
   }
 
   init(): void {
+    console.log('AuthService == > init');
     this.keepSigned = JSON.parse(window.localStorage.getItem(StorageKeys.KEEP_SIGNED));
     this.rememberMe = JSON.parse(window.localStorage.getItem(StorageKeys.REMEMBER_ME));
+    if (this.keepSigned) {
+      console.log('keepSigned: ', this.keepSigned);
+      this.authUser = new User({id: Base64.decode(window.localStorage.getItem(StorageKeys.USER_ID))});
+      console.log('authUser.id: ', this.authUser.id);
+    }
   }
 
   get isAuthenticated(): Observable<boolean> {
@@ -65,6 +71,7 @@ export class AuthService {
     console.log('rememberMe', this.rememberMe);
     window.localStorage.setItem(StorageKeys.REMEMBER_ME, this.rememberMe.toString());
     if (!this.rememberMe) {
+      window.localStorage.removeItem(StorageKeys.USER_ID);
       window.localStorage.removeItem(StorageKeys.USER_EMAIL);
       window.localStorage.removeItem(StorageKeys.USER_PASSWORD);
     }
@@ -193,6 +200,7 @@ export class AuthService {
     console.log('setAuthState: ', authData);
     if (authData.isAuthenticated) {
       window.localStorage.setItem(StorageKeys.AUTH_TOKEN, authData.token);
+      window.localStorage.setItem(StorageKeys.USER_ID, Base64.encode(authData.id));
       this._isAuthenticated.next(authData.isAuthenticated);
       this.setAuthUser(authData.id)
         .pipe(
@@ -212,6 +220,7 @@ export class AuthService {
     this.apolloConfigModule.closeWebSocketConnection();
     window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
     window.localStorage.removeItem(StorageKeys.KEEP_SIGNED);
+    window.localStorage.removeItem(StorageKeys.USER_ID);
     this.apolloConfigModule.cachePersistor.purge();
     this.keepSigned = false;
     this._isAuthenticated.next(false);

@@ -9,9 +9,10 @@ import { UserService } from '../../core/services/user.service';
 import { Subscription } from 'apollo-client/util/Observable';
 import { map } from 'rxjs/operators';
 import { DataProxy } from 'apollo-cache';
+import { BaseService } from 'src/app/core/services/base.service';
 
 @Injectable()
-export class ChatService {
+export class ChatService extends BaseService {
 
   chats$: Observable<Chat[]>;
   private queryRef: QueryRef<AllChatsQuery>;
@@ -22,7 +23,7 @@ export class ChatService {
     private authService: AuthService,
     private router: Router,
     private userService: UserService
-  ) { }
+  ) { super(); }
 
   getUserChats(): Observable<Chat[]> {
     return this.apollo.query<AllChatsQuery>({
@@ -68,27 +69,27 @@ export class ChatService {
       },
       update: (store: DataProxy, { data: { createChat } }) => {
 
-        // this.readAndWriteQuery<Chat>({
-        //   store,
-        //   newRecord: createChat,
-        //   query: USER_CHATS_QUERY,
-        //   queryName: 'allChats',
-        //   arrayOperation: 'unshift',
-        //   variables: { loggedUserId: this.authService.authUser.id }
-        // });
+        this.readAndWriteQuery<Chat>({
+          store,
+          newRecord: createChat,
+          query: USER_CHATS_QUERY,
+          queryName: 'allChats',
+          arrayOperation: 'unshift',
+          variables: { loggedUserId: this.authService.authUser.id }
+        });
 
-        // this.readAndWriteQuery<Chat>({
-        //   store,
-        //   newRecord: createChat,
-        //   query: CHAT_BY_ID_OR_BY_USERS_QUERY,
-        //   queryName: 'allChats',
-        //   arrayOperation: 'singleRecord',
-        //   variables: {
-        //     chatId: targetUserId,
-        //     loggedUserId: this.authService.authUser.id,
-        //     targetUserId
-        //   }
-        // });
+        this.readAndWriteQuery<Chat>({
+          store,
+          newRecord: createChat,
+          query: CHAT_BY_ID_OR_BY_USERS_QUERY,
+          queryName: 'allChats',
+          arrayOperation: 'singleRecord',
+          variables: {
+            chatId: targetUserId,
+            loggedUserId: this.authService.authUser.id,
+            targetUserId
+          }
+        });
 
       }
     }).pipe(

@@ -55,6 +55,8 @@
 - [26. Apollo Direct Cache Access](#26-apollo-direct-cache-access)
 - [27. Apollo Optimistic UI](#27-apollo-optimistic-ui)
 - [Apollo What is QueryRef](#apollo-what-is-queryref)
+- [Apollo Updating the Store](#apollo-updating-the-store)
+- [Apollo Direct Cache Access](#apollo-direct-cache-access)
 
 ----
 
@@ -412,3 +414,18 @@ Para usar o Apollo's Observable em RxJS, teríamos que abandonar esses métodos.
 É por isso que nós criamos QueryRef.
 
 [apollographql.com/docs/angular/basics/queries](https://www.apollographql.com/docs/angular/basics/queries.html#queryref)
+
+# Apollo Updating the Store
+
+O Apollo executa duas importantes tarefas principais: Executar consultas e mutações e armazenar em cache os resultados.
+
+Graças ao design da loja da Apollo, é possível que os resultados de uma consulta ou mutação atualizem sua interface do usuário em todos os lugares certos. Em muitos casos, é possível que isso aconteça automaticamente, enquanto em outros você precisa ajudar um pouco o cliente a fazê-lo.
+
+[apollographql.com/docs/angular/features/cache-updates](https://www.apollographql.com/docs/angular/features/cache-updates.html)
+
+# Apollo Direct Cache Access
+
+Leia e escreva funções para acesso de cache refinado.
+
+[apollographql.com/docs/angular/features/caching](https://www.apollographql.com/docs/angular/features/caching.html)
+

@@ -13,11 +13,12 @@ import { User } from '../../core/models/user.model';
 import { CREATE_MESSAGE_MUTATION } from './message.graphql';
 import { AllChatsQuery, USER_CHATS_QUERY } from './chat.graphql';
 import { DataProxy } from 'apollo-cache';
+import { BaseService } from 'src/app/core/services/base.service';
 
 @Injectable()
-export class MessageService {
+export class MessageService extends BaseService {
 
-  constructor(private apollo: Apollo, private authService: AuthService) {}
+  constructor(private apollo: Apollo, private authService: AuthService) { super(); }
 
   getChatMessages(chatId: string): Observable<Message[]> {
     return this.apollo.watchQuery<AllMessagesQuery>({
@@ -45,7 +46,7 @@ export class MessageService {
       .mutate({
         mutation: CREATE_MESSAGE_MUTATION,
         variables: message,
-        optimisticResponse: {
+        optimisticResponse: { // Otimizando tempo de exibição na tela com Optimistic UI
           __typename: 'Mutation',
           createMessage: {
             __typename: 'Message',
@@ -61,10 +62,7 @@ export class MessageService {
               photo: {
                 __typename: 'File',
                 id: '',
-                secret:
-                  (this.authService.authUser.photo &&
-                    this.authService.authUser.photo.secret) ||
-                  ''
+                secret: (this.authService.authUser.photo && this.authService.authUser.photo.secret) || ''
               }
             },
             chat: {
@@ -74,14 +72,14 @@ export class MessageService {
           }
         },
         update: (store: DataProxy, { data: { createMessage } }) => {
-          // this.readAndWriteQuery<Message>({
-          //   store,
-          //   newRecord: createMessage,
-          //   query: GET_CHAT_MESSAGES_QUERY,
-          //   queryName: 'allMessages',
-          //   arrayOperation: 'push',
-          //   variables: { chatId: message.chatId }
-          // });
+          this.readAndWriteQuery<Message>({
+            store,
+            newRecord: createMessage,
+            query: GET_CHAT_MESSAGES_QUERY,
+            queryName: 'allMessages',
+            arrayOperation: 'push',
+            variables: { chatId: message.chatId }
+          });
 
           try {
             const userChatsVariables = {

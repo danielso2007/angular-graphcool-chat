@@ -86,8 +86,11 @@ export class ChatService extends BaseService implements OnDestroy {
         try {
 
           if (newMessage.sender.id !== this.authService.authUser.id) {
+
+            // Apollo SubscribeToMore: atualizando lista de mensagens recebida
             const apolloClient = this.apollo.getClient();
 
+            // Apollo SubscribeToMore: atualizando lista de mensagens recebida
             const chatMessagesVariables = { chatId: newMessage.chat.id };
 
             const chatMessagesData = apolloClient.readQuery<AllMessagesQuery>({
@@ -95,8 +98,10 @@ export class ChatService extends BaseService implements OnDestroy {
               variables: chatMessagesVariables
             });
 
+            // Apollo SubscribeToMore: atualizando lista de mensagens recebida
             chatMessagesData.allMessages = [...chatMessagesData.allMessages, newMessage];
 
+            // Apollo SubscribeToMore: atualizando lista de mensagens recebida
             apolloClient.writeQuery({
               query: GET_CHAT_MESSAGES_QUERY,
               variables: chatMessagesVariables,

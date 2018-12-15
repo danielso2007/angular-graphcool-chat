@@ -85,6 +85,8 @@ export class ChatService extends BaseService implements OnDestroy {
 
         try {
 
+          // Apollo SubscribeToMore: atualizando lista de mensagens recebida
+          // Não deixa 2 mensagens ser inseridas no cache.
           if (newMessage.sender.id !== this.authService.authUser.id) {
 
             // Apollo SubscribeToMore: atualizando lista de mensagens recebida

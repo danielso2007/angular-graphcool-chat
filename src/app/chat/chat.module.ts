@@ -24,6 +24,9 @@ import { ChatAddGroupComponent } from './components/chat-add-group/chat-add-grou
     ChatService,
     MessageService,
     ChatWindowResolver
+  ],
+  entryComponents: [
+    ChatAddGroupComponent
   ]
 })
 export class ChatModule { }

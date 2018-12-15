@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { AllChatsQuery, USER_CHATS_QUERY, ChatQuery, CHAT_BY_ID_OR_BY_USERS_QUERY, CREATE_PRIVATE_CHAT_MUTATION, USER_CHATS_SUBSCRIPTION } from './chat.graphql';
+import { AllChatsQuery, USER_CHATS_QUERY, ChatQuery, CHAT_BY_ID_OR_BY_USERS_QUERY, CREATE_PRIVATE_CHAT_MUTATION, USER_CHATS_SUBSCRIPTION, CREATE_GROUP_MUTATION } from './chat.graphql';
 import { Chat } from '../models/chat.model';
 import { AuthService } from '../../core/services/auth.service';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
@@ -204,6 +204,63 @@ export class ChatService extends BaseService implements OnDestroy {
             loggedUserId: this.authService.authUser.id,
             targetUserId
           }
+        });
+
+      }
+    }).pipe(
+      map(res => res.data.createChat)
+    );
+  }
+
+  createGroup(variables: {title: string, usersIds: string[], photoId: string}): Observable<Chat> {
+
+    variables.usersIds.push(this.authService.authUser.id);
+
+    return this.apollo.mutate({
+      mutation: CREATE_GROUP_MUTATION,
+      variables: {
+        ...variables,
+        loggedUserId: this.authService.authUser.id
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        createChat: {
+          __typename: 'Chat',
+          id: '',
+          title: variables.title,
+          createdAt: new Date().toISOString(),
+          isGroup: true,
+          photo: {
+            __typename: 'File',
+            id: '',
+            secret: ''
+          },
+          users: [
+            {
+              __typename: 'User',
+              id: '',
+              name: '',
+              email: '',
+              createdAt: new Date().toISOString(),
+              photo: {
+                __typename: 'File',
+                id: '',
+                secret: ''
+              }
+            }
+          ],
+          messages: []
+        }
+      },
+      update: (store: DataProxy, { data: { createChat } }) => {
+
+        this.readAndWriteQuery<Chat>({
+          store,
+          newRecord: createChat,
+          query: USER_CHATS_QUERY,
+          queryName: 'allChats',
+          arrayOperation: 'unshift',
+          variables: { loggedUserId: this.authService.authUser.id }
         });
 
       }

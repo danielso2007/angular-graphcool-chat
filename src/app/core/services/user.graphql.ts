@@ -93,7 +93,7 @@ export const getUpdateUserPhotoMutation = (hasOldPhoto: boolean): DocumentNode =
   `;
 };
 
-
+// Atualizando lista de Usuários em tempo real com subscriptions
 export const USERS_SUBSCRIPTION = gql`
   subscription UsersSubscription {
     User(

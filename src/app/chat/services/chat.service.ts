@@ -59,13 +59,15 @@ export class ChatService extends BaseService implements OnDestroy {
       fetchPolicy: 'network-only'
     });
 
-    this.queryRef.subscribeToMore({ // SubscribeToMore: exibindo última mensagem dos chats em tempo
+    // Atualizando lista de Chats do usuário com Subscription Data
+    this.queryRef.subscribeToMore({
       document: USER_CHATS_SUBSCRIPTION,
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
 
         const newChat: Chat = subscriptionData.data['Chat'].node;
 
+        // Atualizando lista de Chats do usuário com Subscription Data
         if (previous.allChats.every(chat => chat.id !== newChat.id)) {
           return {
             ...previous,

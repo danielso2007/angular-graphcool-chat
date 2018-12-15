@@ -128,6 +128,7 @@ export const CREATE_GROUP_MUTATION = gql`
   ${ChatMessagesFragment}
 `;
 
+// Atualizando lista de Chats do usuário com Subscription Data
 export const USER_CHATS_SUBSCRIPTION = gql`
   subscription UserChatsSubscription($loggedUserId: ID!) {
     Chat(

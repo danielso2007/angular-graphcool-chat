@@ -80,7 +80,7 @@ export class ChatService extends BaseService implements OnDestroy {
       document: USER_MESSAGES_SUBSCRIPTION,
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
-        console.log('subscribeToMore: ', subscriptionData.data);
+
         const newMessage: Message = subscriptionData.data['Message'].node;
 
         try {
@@ -114,6 +114,7 @@ export class ChatService extends BaseService implements OnDestroy {
             ? previous.allChats.findIndex(chat => chat.id === newMessage.chat.id)
             : -1;
 
+            // SubscribeToMore: exibindo última mensagem dos chats em tempo
         if (chatToUpdateIndex > -1) {
           const newAllChats = [...previous.allChats];
           const chatToUpdate: Chat = Object.assign({}, newAllChats[chatToUpdateIndex]);

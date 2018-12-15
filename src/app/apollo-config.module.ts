@@ -63,7 +63,7 @@ export class ApolloConfigModule {
       options: {
         reconnect: true,
         timeout: 30000,
-        connectionParams: () => ({
+        connectionParams: () => ({ // Autenticação com WebSockets
           Authorization: `Bearer ${this.getAuthToken()}`
         })
       }

@@ -176,6 +176,7 @@ export class AuthService {
   }
 
   private validateToken(): Observable<{id: string, isAuthenticated: boolean}> {
+    // Dica: fetchPolicy e CachePersistor para ajustar uso do apollo cache persist
     return this.apollo.query<LoggedInUserQuery>({query: LOGGED_IN_USER_QUERY, fetchPolicy: 'network-only'})
     .pipe(
       map(res => {
@@ -221,7 +222,7 @@ export class AuthService {
     window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
     window.localStorage.removeItem(StorageKeys.KEEP_SIGNED);
     window.localStorage.removeItem(StorageKeys.USER_ID);
-    this.apolloConfigModule.cachePersistor.purge();
+    this.apolloConfigModule.cachePersistor.purge(); // fetchPolicy e CachePersistor para ajustar uso do apollo cache persist
     this.keepSigned = false;
     this._isAuthenticated.next(false);
     this.router.navigate(['/login']);

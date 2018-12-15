@@ -80,7 +80,7 @@ export class ApolloConfigModule {
 
     this.cachePersistor = new CachePersistor({
       cache,
-      storage: window.localStorage
+      storage: window.localStorage // fetchPolicy e CachePersistor para ajustar uso do apollo cache persist
     }); // Bônus: Apollo Cache Persist e dica sobre recursos Offline com Apollo
 
     apollo.create({

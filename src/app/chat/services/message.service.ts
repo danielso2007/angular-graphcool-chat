@@ -24,7 +24,7 @@ export class MessageService extends BaseService {
     return this.apollo.watchQuery<AllMessagesQuery>({
         query: GET_CHAT_MESSAGES_QUERY,
         variables: { chatId },
-        fetchPolicy: 'network-only'
+        fetchPolicy: 'network-only' // Alterando fetchPolicy da lista de mensagens do Chat
       }).valueChanges.pipe( // valueChanges dá acesso ao Observable.
         map(res => res.data.allMessages),
         map(messages =>

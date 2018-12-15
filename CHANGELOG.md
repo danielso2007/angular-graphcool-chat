@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/danielso2007/angular-graphcool-chat/compare/v1.0.0...v1.1.0) (2018-12-15)
+
+
+### Bug Fixes
+
+* Erro ao gravar mensagens repetidas no chache do apollo. ([5bf460f](https://github.com/danielso2007/angular-graphcool-chat/commit/5bf460f))
+
+
+### Features
+
+* 'Reload' da Query feita na Resolve Guard usando acesso ao cache. ([a97bf50](https://github.com/danielso2007/angular-graphcool-chat/commit/a97bf50))
+* Ajustando monitoramento da lista de Chats. ([e2c5020](https://github.com/danielso2007/angular-graphcool-chat/commit/e2c5020))
+* Alterando fetchPolicy da lista de mensagens do Chat. ([07abfdb](https://github.com/danielso2007/angular-graphcool-chat/commit/07abfdb))
+* Apollo Cache Persist e dica sobre recursos Offline com Apollo. ([09cbc6b](https://github.com/danielso2007/angular-graphcool-chat/commit/09cbc6b))
+* Apollo SubscribeToMore: atualizando lista de mensagens recebida e correção de mensagens duplicadas. ([c75f2ed](https://github.com/danielso2007/angular-graphcool-chat/commit/c75f2ed))
+* Apollo SubscribeToMore: atualizando lista de mensagens recebida. ([9898954](https://github.com/danielso2007/angular-graphcool-chat/commit/9898954))
+* Atualizando lista de Chats do usuário com Subscription Data. ([0b46a3d](https://github.com/danielso2007/angular-graphcool-chat/commit/0b46a3d))
+* Atualizando lista de Usuários em tempo real com subscriptions. ([a49574b](https://github.com/danielso2007/angular-graphcool-chat/commit/a49574b))
+* Atualizando última mensagem enviada para o Chat. ([21b91b8](https://github.com/danielso2007/angular-graphcool-chat/commit/21b91b8))
+* Autenticação com WebSockets. ([373c8a2](https://github.com/danielso2007/angular-graphcool-chat/commit/373c8a2))
+* ChatAddGroupComponent para criar novos grupos de conversa. ([52e93d9](https://github.com/danielso2007/angular-graphcool-chat/commit/52e93d9))
+* Criado o pipe readFile. ([4952c6f](https://github.com/danielso2007/angular-graphcool-chat/commit/4952c6f))
+* FabButton e MatMenu para adicionar novos grupos. ([875c0f7](https://github.com/danielso2007/angular-graphcool-chat/commit/875c0f7))
+* fetchPolicy e CachePersistor para ajustar uso do apollo cache persist> ([9e157e8](https://github.com/danielso2007/angular-graphcool-chat/commit/9e157e8))
+* Instalando pacotes NPM e configurando WebSocketLink. ([eebd3c4](https://github.com/danielso2007/angular-graphcool-chat/commit/eebd3c4))
+* melhorando tratamento de erros quando o token for inváli. ([8bef34d](https://github.com/danielso2007/angular-graphcool-chat/commit/8bef34d))
+* Monitorando lista de chats do usuário no ChatTabComponent. ([cea31ef](https://github.com/danielso2007/angular-graphcool-chat/commit/cea31ef))
+* Monitorando lista de usuários fora do ChatUsersComponent. ([59a09ea](https://github.com/danielso2007/angular-graphcool-chat/commit/59a09ea))
+* Monitorando Query da lista de chats com watchQuery. ([ccedca7](https://github.com/danielso2007/angular-graphcool-chat/commit/ccedca7))
+* Otimizando tempo de exibição na tela com Optimistic UI. ([258eb0b](https://github.com/danielso2007/angular-graphcool-chat/commit/258eb0b))
+* Scroll automático da tela ao criar novas mensagens. ([e5874fd](https://github.com/danielso2007/angular-graphcool-chat/commit/e5874fd))
+* SubscribeToMore: exibindo última mensagem dos chats em tempo. ([6eb76d4](https://github.com/danielso2007/angular-graphcool-chat/commit/6eb76d4))
+* SubscribeToMore: exibindo última mensagem dos chats em tempo> ([ced022c](https://github.com/danielso2007/angular-graphcool-chat/commit/ced022c))
+* Subscription para receber novas mensagem em tempo real. ([b573c32](https://github.com/danielso2007/angular-graphcool-chat/commit/b573c32))
+* Tornando fromNowPipe impuro. ([a0f2f4d](https://github.com/danielso2007/angular-graphcool-chat/commit/a0f2f4d))
+* Tratando reconnect para enviar token atualizado. ([e6ce3c6](https://github.com/danielso2007/angular-graphcool-chat/commit/e6ce3c6))
+* Tratando unsubscribe por meio de eventos do Roteador do Angular. ([730998f](https://github.com/danielso2007/angular-graphcool-chat/commit/730998f))
+* Tratanto multiplos subscribes do ChatTab e nova chamada no Chat. ([d6b7ea2](https://github.com/danielso2007/angular-graphcool-chat/commit/d6b7ea2))
+* Usando watchQuery para novas mensagens. ([f99e84b](https://github.com/danielso2007/angular-graphcool-chat/commit/f99e84b))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/danielso2007/angular-graphcool-chat/compare/v0.2.0...v1.0.0) (2018-12-13)
 

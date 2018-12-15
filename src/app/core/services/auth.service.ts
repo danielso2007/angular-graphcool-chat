@@ -209,7 +209,7 @@ export class AuthService {
         )
         .subscribe();
       if (!isRefresh) {
-        this.apolloConfigModule.closeWebSocketConnection();
+        this.apolloConfigModule.closeWebSocketConnection(); // Tratando "reconnect" para enviar token atualizado
       }
       return;
     }
@@ -217,7 +217,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.apolloConfigModule.closeWebSocketConnection();
+    this.apolloConfigModule.closeWebSocketConnection();// Tratando "reconnect" para enviar token atualizado
     window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
     window.localStorage.removeItem(StorageKeys.KEEP_SIGNED);
     window.localStorage.removeItem(StorageKeys.USER_ID);

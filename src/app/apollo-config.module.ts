@@ -24,7 +24,7 @@ import {
 })
 export class ApolloConfigModule {
   cachePersistor: CachePersistor<any>;
-  private subscriptionClient: SubscriptionClient;
+  private subscriptionClient: SubscriptionClient; // Tratando "reconnect" para enviar token atualizado
 
   constructor(
     private apollo: Apollo,
@@ -69,7 +69,7 @@ export class ApolloConfigModule {
       }
     });
 
-    this.subscriptionClient = (<any>ws).subscriptionClient; // Instalando pacotes NPM e configurando WebSocketLink
+    this.subscriptionClient = (<any>ws).subscriptionClient; // Tratando "reconnect" para enviar token atualizado
 
     const cache = new InMemoryCache({
       dataIdFromObject: (object: any) => {
@@ -103,7 +103,7 @@ export class ApolloConfigModule {
     });
   }
 
-  closeWebSocketConnection(): void {
+  closeWebSocketConnection(): void { // Tratando "reconnect" para enviar token atualizado
     this.subscriptionClient.close(true, true);
   }
 

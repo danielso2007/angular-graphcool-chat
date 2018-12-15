@@ -58,7 +58,7 @@ export class ChatService extends BaseService implements OnDestroy {
       fetchPolicy: 'network-only'
     });
 
-    this.queryRef.subscribeToMore({
+    this.queryRef.subscribeToMore({ // SubscribeToMore: exibindo última mensagem dos chats em tempo
       document: USER_CHATS_SUBSCRIPTION,
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
@@ -76,11 +76,11 @@ export class ChatService extends BaseService implements OnDestroy {
       }
     });
 
-    this.queryRef.subscribeToMore({
+    this.queryRef.subscribeToMore({ // SubscribeToMore: exibindo última mensagem dos chats em tempo
       document: USER_MESSAGES_SUBSCRIPTION,
       variables: { loggedUserId: this.authService.authUser.id },
       updateQuery: (previous: AllChatsQuery, { subscriptionData }): AllChatsQuery => {
-
+        console.log('subscribeToMore: ', subscriptionData.data);
         const newMessage: Message = subscriptionData.data['Message'].node;
 
         try {

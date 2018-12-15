@@ -13,7 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatMenuModule } from '@angular/material';
 import { NoRecordComponent } from './components/no-record/no-record.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
@@ -35,6 +35,7 @@ import { FromNowPipe } from './pipes/from-now.pipe';
     MatSidenavModule,
     MatIconModule,
     MatTabsModule,
+    MatMenuModule,
     NoRecordComponent,
     AvatarComponent,
     FromNowPipe

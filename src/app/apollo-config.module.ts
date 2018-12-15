@@ -58,7 +58,7 @@ export class ApolloConfigModule {
       }
     });
 
-    const ws = new WebSocketLink({
+    const ws = new WebSocketLink({ // Instalando pacotes NPM e configurando WebSocketLink
       uri: this.graphcoolConfig.subscriptionsAPI,
       options: {
         reconnect: true,
@@ -69,7 +69,7 @@ export class ApolloConfigModule {
       }
     });
 
-    this.subscriptionClient = (<any>ws).subscriptionClient;
+    this.subscriptionClient = (<any>ws).subscriptionClient; // Instalando pacotes NPM e configurando WebSocketLink
 
     const cache = new InMemoryCache({
       dataIdFromObject: (object: any) => {
@@ -81,12 +81,12 @@ export class ApolloConfigModule {
     this.cachePersistor = new CachePersistor({
       cache,
       storage: window.localStorage
-    }); // Bônus: Apollo Cache Persist e dica sobre recursos Offline com
+    }); // Bônus: Apollo Cache Persist e dica sobre recursos Offline com Apollo
 
     apollo.create({
       link: ApolloLink.from([
         linkError,
-        ApolloLink.split(
+        ApolloLink.split( // Instalando pacotes NPM e configurando WebSocketLink
           (operation: Operation) => {
             const operationAST = getOperationAST(
               operation.query,

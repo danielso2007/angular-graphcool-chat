@@ -429,3 +429,12 @@ Leia e escreva funções para acesso de cache refinado.
 
 [apollographql.com/docs/angular/features/caching](https://www.apollographql.com/docs/angular/features/caching.html)
 
+# Apollo Subscriptions
+
+Além de buscar dados usando consultas e modificar dados usando mutações, a especificação GraphQL suporta um terceiro tipo de operação, chamado subscription.
+
+As assinaturas do GraphQL são uma maneira de enviar dados do servidor para os clientes que escolhem ouvir mensagens em tempo real do servidor. As assinaturas são semelhantes às consultas, pois especificam um conjunto de campos a serem entregues ao cliente, mas, em vez de retornar imediatamente uma única resposta, um resultado é enviado toda vez que um determinado evento acontece no servidor.
+
+Um caso de uso comum para assinaturas é notificar o lado do cliente sobre eventos específicos, por exemplo, a criação de um novo objeto, campos atualizados e assim por diante.
+
+[apollographql.com/docs/angular/features/subscriptions](https://www.apollographql.com/docs/angular/features/subscriptions.html)

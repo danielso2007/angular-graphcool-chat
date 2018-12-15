@@ -96,29 +96,6 @@ export class AuthService {
     };
   }
 
-  autoLogin(): Observable<void> {
-    console.log('autoLogin: ', this.keepSigned);
-    if (!this.keepSigned) {
-      this._isAuthenticated.next(false);
-      window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
-      return of();
-    }
-
-    return this.validateToken()
-      .pipe(
-        tap(authData => {
-          const token = window.localStorage.getItem(StorageKeys.AUTH_TOKEN);
-          console.log('Token válido');
-          this.setAuthState({id: authData.id, token, isAuthenticated: authData.isAuthenticated}, true);
-        }),
-        mergeMap(res => of()),
-        catchError(error => {
-          this.setAuthState({id: null, token: null, isAuthenticated: false});
-          return throwError(error);
-        })
-      );
-  }
-
   signinUser(variables: {
     email: string;
     password: string;
@@ -175,6 +152,29 @@ export class AuthService {
     return throwError(error);
   }
 
+  autoLogin(): Observable<void> {
+    console.log('autoLogin: ', this.keepSigned);
+    if (!this.keepSigned) {
+      this._isAuthenticated.next(false);
+      window.localStorage.removeItem(StorageKeys.AUTH_TOKEN);
+      return of();
+    }
+
+    return this.validateToken()
+      .pipe(
+        tap(authData => {
+          const token = window.localStorage.getItem(StorageKeys.AUTH_TOKEN);
+          console.log('Token válido');
+          this.setAuthState({id: authData.id, token, isAuthenticated: authData.isAuthenticated}, true);
+        }),
+        mergeMap(res => of()),
+        catchError(error => {
+          this.setAuthState({id: null, token: null, isAuthenticated: false});
+          return throwError(error);
+        })
+      );
+  }
+
   private validateToken(): Observable<{id: string, isAuthenticated: boolean}> {
     // Dica: fetchPolicy e CachePersistor para ajustar uso do apollo cache persist
     return this.apollo.query<LoggedInUserQuery>({query: LOGGED_IN_USER_QUERY, fetchPolicy: 'network-only'})
@@ -186,6 +186,7 @@ export class AuthService {
           isAuthenticated: user !== null
         };
       }),
+      // mergeMap Retorna um observable apenas.
       mergeMap(authData => (authData.isAuthenticated) ? of(authData) : throwError(new Error('Invalid token!')))
     );
   }

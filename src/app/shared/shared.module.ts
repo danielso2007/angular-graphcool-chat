@@ -17,6 +17,7 @@ import { MatTabsModule, MatMenuModule, MatDialogModule } from '@angular/material
 import { NoRecordComponent } from './components/no-record/no-record.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
+import { ReadFilePipe } from './pipes/read-file.pipe';
 
 @NgModule({
   imports: [MatIconModule, CommonModule],
@@ -39,8 +40,9 @@ import { FromNowPipe } from './pipes/from-now.pipe';
     MatDialogModule,
     NoRecordComponent,
     AvatarComponent,
-    FromNowPipe
+    FromNowPipe,
+    ReadFilePipe
   ],
-  declarations: [NoRecordComponent, AvatarComponent, FromNowPipe]
+  declarations: [NoRecordComponent, AvatarComponent, FromNowPipe, ReadFilePipe]
 })
 export class SharedModule {}

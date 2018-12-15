@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { User } from '../../../core/models/user.model';
 import { UserService } from '../../../core/services/user.service';
 import { BaseComponent } from '../../../shared/components/base.component';
-import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-chat-users',
@@ -15,12 +14,11 @@ export class ChatUsersComponent extends BaseComponent<User> implements OnInit {
   users$: Observable<User[]>;
 
   constructor(
-    private userService: UserService,
-    protected authService: AuthService
+    private userService: UserService
   ) { super(); }
 
   ngOnInit() {
-    this.users$ = this.userService.allUsers(this.authService.authUser.id);
+    this.users$ = this.userService.users$;
   }
 
 }

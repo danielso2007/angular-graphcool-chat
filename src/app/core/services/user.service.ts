@@ -50,7 +50,7 @@ export class UserService extends BaseService {
         variables: {
           idToExclude
         },
-        fetchPolicy: 'network-only'
+        fetchPolicy: 'network-only' // Monitorando lista de usuários fora do ChatUsersComponent
       });
 
       // Atualizando lista de Usuários em tempo real com subscriptions

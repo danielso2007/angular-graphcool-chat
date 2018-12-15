@@ -57,6 +57,7 @@ export const CREATE_MESSAGE_MUTATION = gql`
   ${MessageFragment}
 `;
 
+// Subscription para receber novas mensagem em tempo real
 export const USER_MESSAGES_SUBSCRIPTION = gql`
   subscription UserMessagesSubscription($loggedUserId: ID!) {
     Message(

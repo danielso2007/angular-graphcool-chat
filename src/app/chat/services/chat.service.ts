@@ -56,7 +56,7 @@ export class ChatService extends BaseService implements OnDestroy {
       variables: {
         loggedUserId: this.authService.authUser.id
       },
-      fetchPolicy: 'network-only'
+      fetchPolicy: 'network-only' // Ajustando monitoramento da lista de Chats
     });
 
     // Atualizando lista de Chats do usuário com Subscription Data

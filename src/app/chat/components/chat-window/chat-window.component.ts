@@ -41,6 +41,8 @@ export class ChatWindowComponent extends BaseComponent<Chat> implements OnInit, 
   ) { super(); }
 
   ngOnInit() {
+    // Tratanto multiplos "subscribes" do ChatTab e nova chamada no C
+    this.chatService.startChatsMonitoring();
     this.title.setTitle('Loading...');
     this.subscriptions.push(
       this.route.data

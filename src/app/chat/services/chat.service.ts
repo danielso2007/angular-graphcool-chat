@@ -30,6 +30,7 @@ export class ChatService extends BaseService implements OnDestroy {
 
   startChatsMonitoring(): void {
     if (!this.chats$) {
+      console.log('New startChatsMonitoring...');
       this.chats$ = this.getUserChats();
       this.subscriptions.push(this.chats$.subscribe());
       this.subscriptions.push( // Tratando unsubscribe por meio de eventos do Roteador do Angular

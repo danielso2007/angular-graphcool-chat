@@ -73,7 +73,7 @@ export class ApolloConfigModule {
 
     const cache = new InMemoryCache({
       dataIdFromObject: (object: any) => {
-        console.log('InMemoryCache ==> ', object);
+        // console.log('InMemoryCache ==> ', object);
         return object.id;
       }
     });

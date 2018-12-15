@@ -10,7 +10,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})], // Tratando unsubscribe por meio de eventos do Roteador do Angular
+  imports: [RouterModule.forRoot(routes, {enableTracing: false})], // Tratando unsubscribe por meio de eventos do Roteador do Angular
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

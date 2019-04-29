@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/danielso2007/angular-graphcool-chat.svg?branch=master)](https://travis-ci.org/danielso2007/angular-graphcool-chat)
-![version](https://img.shields.io/badge/version-0.0.0-blue.svg)
 ![GitHub package version](https://img.shields.io/github/package-json/v/danielso2007/angular-graphcool-chat.svg)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/danielso2007/angular-graphcool-chat.svg)](https://github.com/danielso2007/angular-graphcool-chat/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/danielso2007/angular-graphcool-chat.svg)](https://github.com/danielso2007/angular-graphcool-chat/issues?q=is%3Aopen+is%3Aissue)
